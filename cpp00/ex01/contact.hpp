@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 18:22:40 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/03 18:52:19 by dbislimi         ###   ########.fr       */
+/*   Created: 2024/12/06 16:30:02 by dbislimi          #+#    #+#             */
+/*   Updated: 2024/12/06 20:12:28 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_H
-# define PHONEBOOK_H
+#ifndef CONTACT_H
+# define CONTACT_H
 
 # include <iostream>
+# include <iomanip>
 
 class Contact {
 
 public:
-	std::string Nom;
-	std::string Numero;
-};
-
-class PhoneBook {
-
-public:
-	Contact contact[7];
+	std::string FirstName;
+	std::string LastName;
+	std::string NickName;
+	std::string DarkestSecret;
+	std::string Number;
 };
 
 #endif
