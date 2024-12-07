@@ -3,7 +3,7 @@ OBJS = ${SRCS:.cpp=.o}
 
 NAME 		= phonebook
 CC 			= c++
-CPPFLAGS 	= -Wall -Wextra -Werror -std=c++98
+CPPFLAGS 	= -Wall -Wextra -Werror -std=c++98 -g3
 RM 			= rm -rf
 
 all : ${NAME}

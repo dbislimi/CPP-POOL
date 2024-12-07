@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 19:49:16 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/06 20:17:02 by dbislimi         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:20:58 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,25 @@ std::string	shorten(std::string &str, size_t size)
 bool	isnum(std::string &str)
 {
 	size_t	size;
+	size_t	i;
+	
+	size = str.length();
+	i = -1;
+	if (str[0] == '+' || str[0] == '-')
+		i = 0;
+	while (++i < size)
+		if (!isdigit(str[i]))
+			return (false);
+	return (true);
+}
+
+bool	isalnumstr(std::string &str)
+{
+	size_t	size;
 
 	size = str.length();
-	for (size_t i = 0; i < size; ++i)
-		if (!isdigit(str[i]))
+	for (size_t	i = 0; i < size; ++i)
+		if (!isalnum(str[i]))
 			return (false);
 	return (true);
 }

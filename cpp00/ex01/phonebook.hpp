@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 18:22:40 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/06 20:12:36 by dbislimi         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:14:24 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,15 @@
 class PhoneBook {
 
 private:
-	Contact contact[7];
+	int		NbContacts;
+	bool	full;
+	Contact contact[8];
 	std::string	askfor(std::string value);
 	void		print_phonebook(void);
 	void		display_contact(int	n);
 	
 public:
-
+	PhoneBook(void);
 	void	add(void);
 	void 	search(void);
 };
@@ -37,5 +39,7 @@ public:
 std::string	trim(const std::string& str);
 std::string	shorten(std::string &str, size_t size);
 bool		isnum(std::string &str);
+bool		isalnumstr(std::string &str);
+
 
 #endif
