@@ -6,11 +6,11 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 19:49:16 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/07 16:20:58 by dbislimi         ###   ########.fr       */
+/*   Updated: 2024/12/09 19:03:36 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "phonebook.hpp"
+# include "Phonebook.hpp"
 
 std::string	trim(const std::string& str)
 {
@@ -29,7 +29,7 @@ std::string	shorten(std::string &str, size_t size)
 	std::string	shorted;
 	
 	shorted = "";
-	if (str.size() <= size)
+	if (str.length() <= size)
 		return (str);
 	shorted = str.substr(0, size - 1);
 	shorted += '.';
