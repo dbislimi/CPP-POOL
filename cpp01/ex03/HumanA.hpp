@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 19:12:43 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/11 11:55:58 by dbislimi         ###   ########.fr       */
+/*   Created: 2024/12/11 15:15:10 by dbislimi          #+#    #+#             */
+/*   Updated: 2024/12/11 16:10:09 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <iomanip>
+#ifndef HUMANA_H
+# define HUMANA_H
 
-class Zombie {
+#include "Weapon.hpp"
+
+class HumanA {
 
 public:
 
-	void	announce(void);
+	HumanA(std::string name, Weapon &weapon);
+	void	attack(void);
 	
-	Zombie(const std::string& name);
-	~Zombie(void);
-
 private:
-
+	
 	std::string	name;
+	Weapon		&weapon;
 };
 
-Zombie	*newZombie(std::string name);
-void	randomChump(std::string name);
+#endif

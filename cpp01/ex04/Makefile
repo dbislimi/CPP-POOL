@@ -1,7 +1,7 @@
-SRCS = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+SRCS = main.cpp 
 OBJS = ${SRCS:.cpp=.o}
 
-NAME 		= zombie
+NAME 		= replace
 CC 			= c++
 CPPFLAGS 	= -Wall -Wextra -Werror -std=c++98 -g3
 RM 			= rm -rf

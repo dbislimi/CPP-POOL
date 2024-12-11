@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 19:12:43 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/11 11:55:58 by dbislimi         ###   ########.fr       */
+/*   Created: 2024/12/11 12:10:22 by dbislimi          #+#    #+#             */
+/*   Updated: 2024/12/11 14:01:02 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,11 @@ class Zombie {
 public:
 
 	void	announce(void);
-	
-	Zombie(const std::string& name);
-	~Zombie(void);
+	void	setName(const std::string& name);
 
 private:
 
 	std::string	name;
 };
 
-Zombie	*newZombie(std::string name);
-void	randomChump(std::string name);
+Zombie*	zombieHorde(int N, std::string name);

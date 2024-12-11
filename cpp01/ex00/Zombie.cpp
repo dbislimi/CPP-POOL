@@ -6,13 +6,17 @@
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:15:00 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/10 18:57:14 by dbislimi         ###   ########.fr       */
+/*   Updated: 2024/12/11 11:56:28 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
 Zombie::Zombie(const std::string &name) : name(name){
+}
+
+Zombie::~Zombie(void){
+	std::cout << this->name << " died." << std::endl;
 }
 
 void	Zombie::announce(void)

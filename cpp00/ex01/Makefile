@@ -23,15 +23,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-%.o: %.c
-	$(CC) $(CPPFLAGS) -c -o $@ $<
-
-clean:
-	${RM} ${OBJS}
-
-fclean: clean
-	${RM} ${NAME}
-
-re: fclean all
-
-.PHONY: all clean fclean re

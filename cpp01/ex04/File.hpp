@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   File.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 19:12:43 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/11 11:55:58 by dbislimi         ###   ########.fr       */
+/*   Created: 2024/12/11 16:35:35 by dbislimi          #+#    #+#             */
+/*   Updated: 2024/12/11 19:46:32 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FILE_H
+# define FILE_H
+
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 
-class Zombie {
+class File{
 
 public:
 
-	void	announce(void);
+	File(std::string filename);
+	void	replace(std::string &s1, std::string &s2);
 	
-	Zombie(const std::string& name);
-	~Zombie(void);
-
 private:
 
-	std::string	name;
+	bool	isFound(void) const;
+	std::string		_filename;
+	std::string		content;
+	bool			found;
+	std::ifstream	_file;
 };
 
-Zombie	*newZombie(std::string name);
-void	randomChump(std::string name);
+#endif
