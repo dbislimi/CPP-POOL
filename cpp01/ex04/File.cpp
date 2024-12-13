@@ -3,36 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   File.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:44:52 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/12 20:41:55 by dbislimi         ###   ########.fr       */
+/*   Updated: 2024/12/13 15:54:33 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "File.hpp"
 
-File::File(std::string filename): _filename(filename)
+File::File(std::string filename): found(false), _filename(filename)
 {
 	char	*content;
 	
 	this->file.open(_filename.c_str(), std::ios::binary | std::ios::ate);
 	if (this->file.fail())
-		std::cout << "Error: file " << this->_filename << " not found." << std::endl;
+		std::cout << "Error: file \"" << this->_filename << "\" not found." << std::endl;
 	else
 	{
+		found = true;
 		this->size = static_cast<std::streamsize>(this->file.tellg());
 		content = new char[this->size];
 		this->file.seekg(0, std::ios::beg);
 		this->file.read(content, size);
-		this->_content = std::string(content, this->size);;
+		this->_content = std::string(content, this->size);
 		delete[] content;
 	}
 }
 
-void	File::close(void)
+
+File::~File(void)
 {
-	this->file.close();
+	if (this->found == true)
+		this->file.close();
 }
 
 void	File::replace(std::string &s1, std::string &s2)
@@ -43,7 +46,7 @@ void	File::replace(std::string &s1, std::string &s2)
 	size_t			s1_len;
 	std::streamsize	s2_len;
 	
-	if (this->file.fail())
+	if (this->found == false)
 		return ;
 	s1_len = s1.length();
 	s2_len = s2.length();
@@ -52,7 +55,7 @@ void	File::replace(std::string &s1, std::string &s2)
 		std::cout << "Error: failed to create the copy." << std::endl;
 		return ;
 	}
-	pos = 0;
+;	pos = 0;
 	found = 0;
 	while ((found = this->_content.find(s1, found)) != std::string::npos){
 		output.write(this->_content.c_str() + pos, found - pos);
