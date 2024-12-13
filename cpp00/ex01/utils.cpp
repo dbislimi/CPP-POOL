@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 19:49:16 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/09 19:03:36 by dbislimi         ###   ########.fr       */
+/*   Updated: 2024/12/13 18:04:08 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ bool	isalnumstr(std::string &str)
 
 	size = str.length();
 	for (size_t	i = 0; i < size; ++i)
-		if (!isalnum(str[i]))
+		if (!(isalnum(str[i]) || (str[i] == '.'|| str[i] == '-' || str[i] == ' ')))
 			return (false);
 	return (true);
 }

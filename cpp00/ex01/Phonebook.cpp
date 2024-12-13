@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 16:38:21 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/09 18:59:58 by dbislimi         ###   ########.fr       */
+/*   Updated: 2024/12/13 18:03:30 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ std::string	PhoneBook::askfor(std::string value)
 		buff = trim(buff);
 		if (!isalnumstr(buff))
 		{
-			std::cout << "Please enter alphanumeric characters only." << std::endl;
+			std::cout << "Please enter valid characters only(a-z, A-Z, 0-9, '-', '.' or spaces)." << std::endl;
 			continue ;
 		}
 		if (buff != "")
