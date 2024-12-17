@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:16:23 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/16 20:44:49 by dbislimi         ###   ########.fr       */
+/*   Updated: 2024/12/17 19:31:41 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,35 +44,57 @@ Fixed	&Fixed::operator=(const Fixed &toCopie)
 	return (*this);
 }
 
-Fixed	&Fixed::operator>(const Fixed &toCompare)
+bool	Fixed::operator>(const Fixed &toCompare) const
 {
-	
+	return (this->getRawBits() > toCompare.getRawBits());
 }
 
-Fixed	&Fixed::operator<(const Fixed &toCompare)
+bool	Fixed::operator<(const Fixed &toCompare) const
 {
-	
-}
-Fixed	&Fixed::operator>=(const Fixed &toCompare)
-{
-	
+	return (this->getRawBits() < toCompare.getRawBits());
 }
 
-Fixed	&Fixed::operator<=(const Fixed &toCompare)
+bool	Fixed::operator>=(const Fixed &toCompare) const
 {
-	
+	return (this->getRawBits() >= toCompare.getRawBits());
 }
 
-Fixed	&Fixed::operator==(const Fixed &toCompare)
+bool	Fixed::operator<=(const Fixed &toCompare) const
 {
-
+	return (this->getRawBits() <= toCompare.getRawBits());
 }
 
-Fixed	&Fixed::operator!=(const Fixed &toCompare)
+bool	Fixed::operator==(const Fixed &toCompare) const
 {
-	
+	return (this->getRawBits() == toCompare.getRawBits());
 }
-		
+
+bool	Fixed::operator!=(const Fixed &toCompare) const
+{
+	return (this->getRawBits() != toCompare.getRawBits());
+}
+
+Fixed	Fixed::operator+(const Fixed &toCalcul)
+{
+	Fixed	res(this->getRawBits() + toCalcul.getRawBits());
+	return (res);
+}
+
+Fixed	Fixed::operator-(const Fixed &toCalcul)
+{
+	return (this->fixed - toCalcul.fixed);
+}
+
+Fixed	Fixed::operator*(const Fixed &toCalcul)
+{
+	return (this->fixed * toCalcul.fixed);
+}
+
+Fixed	Fixed::operator/(const Fixed &toCalcul)
+{
+	return (this->fixed / toCalcul.fixed);
+}
+
 int	Fixed::getRawBits(void) const
 {
 	return (this->fixed);

@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:16:46 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/16 20:31:52 by dbislimi         ###   ########.fr       */
+/*   Updated: 2024/12/17 19:31:58 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,18 @@ class Fixed {
 		~Fixed(void);
 
 		Fixed	&operator=(const Fixed &toCopie);
-		Fixed	&operator>(const Fixed &toCompare);
-		Fixed	&operator<(const Fixed &toCompare);
-		Fixed	&operator>=(const Fixed &toCompare);
-		Fixed	&operator<=(const Fixed &toCompare);
-		Fixed	&operator==(const Fixed &toCompare);
-		Fixed	&operator!=(const Fixed &toCompare);
-		
+		bool	operator>(const Fixed &toCompare) const;
+		bool	operator<(const Fixed &toCompare) const;
+		bool	operator>=(const Fixed &toCompare) const;
+		bool	operator<=(const Fixed &toCompare) const;
+		bool	operator==(const Fixed &toCompare) const;
+		bool	operator!=(const Fixed &toCompare) const;
+		Fixed	operator+(const Fixed &toCalcul);
+		Fixed	operator-(const Fixed &toCalcul);
+		Fixed	operator*(const Fixed &toCalcul);
+		Fixed	operator/(const Fixed &toCalcul);
+		Fixed	&operator++(void);
+		Fixed	&operator++(void);
 		
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);

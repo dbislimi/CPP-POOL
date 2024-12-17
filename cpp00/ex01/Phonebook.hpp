@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 18:22:40 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/09 18:59:48 by dbislimi         ###   ########.fr       */
+/*   Updated: 2024/12/17 18:04:28 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ std::string	trim(const std::string& str);
 std::string	shorten(std::string &str, size_t size);
 bool		isnum(std::string &str);
 bool		isalnumstr(std::string &str);
-
+bool		isnumber(std::string &str);
 
 #endif

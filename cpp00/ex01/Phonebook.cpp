@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 16:38:21 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/13 18:03:30 by dbislimi         ###   ########.fr       */
+/*   Updated: 2024/12/17 18:57:13 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,26 @@ PhoneBook::PhoneBook(void)
 
 std::string	PhoneBook::askfor(std::string value)
 {
+	bool(*iscorrect)(std::string&);
 	std::string	buff;
 
+	if (value == "Phone Number")
+		iscorrect = isnumber;
+	else
+		iscorrect = isalnumstr;
 	while (true)
 	{
 		std::cout << value << ": ";
 		std::getline(std::cin, buff);
+		if (std::cin.eof())
+			return ("");
 		buff = trim(buff);
-		if (!isalnumstr(buff))
+		if (!iscorrect(buff))
 		{
-			std::cout << "Please enter valid characters only(a-z, A-Z, 0-9, '-', '.' or spaces)." << std::endl;
+			if (value == "Phone Number")
+				std::cout << "Please enter a valid phone number(only 0-9's or spaces)." << std::endl;
+			else
+				std::cout << "Please enter valid characters only(a-z, A-Z, 0-9, '-', '.' or spaces)." << std::endl;
 			continue ;
 		}
 		if (buff != "")
@@ -77,21 +87,26 @@ void	PhoneBook::add(void)
 		std::cout << std::endl << "Continue ? [y/n]: ";
 		std::getline(std::cin, answer);
 		answer = trim(answer);
-		if (answer == "n")
+		if (std::cin.eof() || answer == "n")
 			return ;
 		else if (answer == "y")
 			break ;
 	}
 	std::cout << std::endl << "Creating new contact ..." << std::endl;
 	answer = askfor("First Name");
+	if (answer == ""){return ;}
 	this->contact[i].FirstName = answer;
 	answer = askfor("Last Name");
+	if (answer == ""){return ;}
 	this->contact[i].LastName = answer;
 	answer = askfor("Nickname");
+	if (answer == ""){return ;}
 	this->contact[i].NickName = answer;
 	answer = askfor("Phone Number");
+	if (answer == ""){return ;}
 	this->contact[i].Number = answer;
 	answer = askfor("Darkest Secret");
+	if (answer == ""){return ;}
 	this->contact[i].DarkestSecret = answer;
 	std::cout << std::endl << "New contact successfully added !" << std::endl;
 	++i;
@@ -117,7 +132,7 @@ void	PhoneBook::search(void)
 		std::cout << "Please enter the contact index to display, or quit(q): ";
 		std::getline(std::cin, buff);
 		buff = trim(buff);
-		if (buff == "q" || buff == "")
+		if (std::cin.eof() || buff == "q" || buff == "")
 			return ;
 		if (isnum(buff))
 		{
