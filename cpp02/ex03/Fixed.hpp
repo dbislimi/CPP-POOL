@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:16:46 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/18 17:01:57 by dbislimi         ###   ########.fr       */
+/*   Updated: 2024/12/18 17:36:49 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ class Fixed {
 		bool	operator<=(const Fixed &toCompare) const;
 		bool	operator==(const Fixed &toCompare) const;
 		bool	operator!=(const Fixed &toCompare) const;
-		Fixed	operator+(const Fixed &toCalcul);
-		Fixed	operator-(const Fixed &toCalcul);
-		Fixed	operator*(const Fixed &toCalcul);
-		Fixed	operator/(const Fixed &toCalcul);
+		Fixed	operator+(const Fixed &toCalcul) const;
+		Fixed	operator-(const Fixed &toCalcul) const;
+		Fixed	operator*(const Fixed &toCalcul) const;
+		Fixed	operator/(const Fixed &toCalcul) const;
 		Fixed	&operator++(void);
 		Fixed	operator++(int);
 		Fixed	&operator--(void);

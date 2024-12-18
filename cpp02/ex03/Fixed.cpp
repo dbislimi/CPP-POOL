@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:16:23 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/18 16:53:25 by dbislimi         ###   ########.fr       */
+/*   Updated: 2024/12/18 17:36:35 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,22 +68,22 @@ bool	Fixed::operator!=(const Fixed &toCompare) const
 	return (this->getRawBits() != toCompare.getRawBits());
 }
 
-Fixed	Fixed::operator+(const Fixed &toCalcul)
+Fixed	Fixed::operator+(const Fixed &toCalcul) const
 {
 	return (Fixed(this->toFloat() + toCalcul.toFloat()));
 }
 
-Fixed	Fixed::operator-(const Fixed &toCalcul)
+Fixed	Fixed::operator-(const Fixed &toCalcul) const
 {
 	return (Fixed(this->toFloat() - toCalcul.toFloat()));
 }
 
-Fixed	Fixed::operator*(const Fixed &toCalcul)
+Fixed	Fixed::operator*(const Fixed &toCalcul) const
 {
 	return (Fixed(this->toFloat() * toCalcul.toFloat()));
 }
 
-Fixed	Fixed::operator/(const Fixed &toCalcul)
+Fixed	Fixed::operator/(const Fixed &toCalcul) const
 {
 	return (Fixed(this->toFloat() / toCalcul.toFloat()));
 }

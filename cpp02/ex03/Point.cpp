@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 15:51:07 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/18 17:01:10 by dbislimi         ###   ########.fr       */
+/*   Updated: 2024/12/18 18:07:08 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,12 @@ Point::Point(const Point &other): x(other.x), y(other.y){}
 
 Point::~Point(void){}
 
-float	Point::triangleArea(Point &a,  Point &b,  Point &c)
+const Fixed	Point::getX(void) const
 {
-	return (abs(1/2 * (a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y))));
+	return (this->x);
+}
+
+const Fixed	Point::getY(void) const
+{
+	return (this->y);
 }
