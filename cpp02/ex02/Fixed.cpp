@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:16:23 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/17 19:31:41 by dbislimi         ###   ########.fr       */
+/*   Updated: 2024/12/18 14:12:34 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,23 +76,22 @@ bool	Fixed::operator!=(const Fixed &toCompare) const
 
 Fixed	Fixed::operator+(const Fixed &toCalcul)
 {
-	Fixed	res(this->getRawBits() + toCalcul.getRawBits());
-	return (res);
+	return (Fixed(this->toFloat() + toCalcul.toFloat()));
 }
 
 Fixed	Fixed::operator-(const Fixed &toCalcul)
 {
-	return (this->fixed - toCalcul.fixed);
+	return (Fixed(this->toFloat() - toCalcul.toFloat()));
 }
 
 Fixed	Fixed::operator*(const Fixed &toCalcul)
 {
-	return (this->fixed * toCalcul.fixed);
+	return (Fixed(this->toFloat() * toCalcul.toFloat()));
 }
 
 Fixed	Fixed::operator/(const Fixed &toCalcul)
 {
-	return (this->fixed / toCalcul.fixed);
+	return (Fixed(this->toFloat() / toCalcul.toFloat()));
 }
 
 int	Fixed::getRawBits(void) const
