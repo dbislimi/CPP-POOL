@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:16:28 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/18 18:23:38 by dbislimi         ###   ########.fr       */
+/*   Updated: 2024/12/19 15:32:44 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,10 @@
 
 int main( void ) {
 	
+	Point	A(0, 0);
+	Point	B(0, 5);
+	Point	C(7, 0);
+	Point	Point(5, 1);
 
+	std::cout << bsp(A, B, C, Point) << std:: endl;
 }

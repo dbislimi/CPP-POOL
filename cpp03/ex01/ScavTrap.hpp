@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Point.cpp                                          :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/18 15:51:07 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/19 13:54:39 by dbislimi         ###   ########.fr       */
+/*   Created: 2024/12/19 17:55:50 by dbislimi          #+#    #+#             */
+/*   Updated: 2024/12/19 18:04:56 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Point.hpp"
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
-Point::Point(void): x(0), y(0){}
+#include "ClapTrap.hpp"
 
-Point::Point(const float x, const float y): x(x), y(y){}
+class ScavTrap : public ClapTrap{
+	
+	using ClapTrap::ClapTrap;
 
-Point::Point(const Point &other): x(other.x), y(other.y){}
+	private:
+	
+	public:
+		ClapTrap(std::string name, int i);
 
-Point::~Point(void){}
+};
 
-const Fixed	Point::getX(void) const
-{
-	return (this->x);
-}
-
-const Fixed	Point::getY(void) const
-{
-	return (this->y);
-}
+#endif

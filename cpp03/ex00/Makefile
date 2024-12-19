@@ -1,7 +1,7 @@
-SRCS = main.cpp Point.cpp Fixed.cpp bsp.cpp
+SRCS = main.cpp ClapTrap.cpp
 OBJS = ${SRCS:.cpp=.o}
 
-NAME 		= triangle
+NAME 		= claptrap
 CC 			= c++
 CPPFLAGS 	= -Wall -Wextra -Werror -std=c++98 -g3
 RM 			= rm -rf
@@ -18,7 +18,7 @@ clean:
 	${RM} ${OBJS}
 
 fclean: clean
-	${RM} ./a.out
+	${RM} ${NAME}
 
 re: fclean all
 

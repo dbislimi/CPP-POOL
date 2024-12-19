@@ -9,7 +9,7 @@ RM 			= rm -rf
 all : ${NAME}
 
 ${NAME} : ${OBJS}
-	${CC} ${CPPFLAGS} ${OBJS} 
+	${CC} ${CPPFLAGS} -o ${NAME} ${OBJS} 
 
 %.o: %.c
 	$(CC) $(CPPFLAGS) -c -o $@ $<
@@ -18,7 +18,7 @@ clean:
 	${RM} ${OBJS}
 
 fclean: clean
-	${RM} ./a.out
+	${RM} ${NAME}
 
 re: fclean all
 

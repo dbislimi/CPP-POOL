@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:16:23 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/18 17:36:35 by dbislimi         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:16:48 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,15 @@ const Fixed	&Fixed::max(const Fixed &a, const Fixed &b)
 	if (a.getRawBits() > b.getRawBits())
 		return (a);
 	return (b);
+}
+
+Fixed	Fixed::abs_f()
+{
+	Fixed	abs(*this);
+	
+	if (this->getRawBits() < 0)
+		abs.setRawBits(-this->getRawBits());
+	return (abs);
 }
 
 void	Fixed::setRawBits(int const raw)

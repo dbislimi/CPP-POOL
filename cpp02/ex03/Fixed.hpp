@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:16:46 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/18 17:36:49 by dbislimi         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:16:22 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ class Fixed {
 		Fixed	&operator--(void);
 		Fixed	operator--(int);
 		
+		Fixed				abs_f();
 		static Fixed		&min(Fixed &a, Fixed &b);
 		static const Fixed	&min(const Fixed &a, const Fixed &b);
 		static Fixed		&max(Fixed &a, Fixed &b);
