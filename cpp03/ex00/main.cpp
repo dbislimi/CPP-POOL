@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 16:24:46 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/19 17:38:49 by dbislimi         ###   ########.fr       */
+/*   Updated: 2024/12/21 17:35:14 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,6 @@ int	main(void)
 	character.takeDamage(10);
 	character.beRepaired(4);
 	character.attack(ops);
-	character.attack(ops);
-	character.attack(ops);
 	character.beRepaired(4);
 	character.beRepaired(4);
-	character.attack(ops);
-	character.attack(ops);
-	character.attack(ops);
-	character.attack(ops);
-	
 }

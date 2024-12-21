@@ -3,38 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 16:24:46 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/19 17:38:49 by dbislimi         ###   ########.fr       */
+/*   Updated: 2024/12/21 17:46:45 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int	main(void)
 {
-	ClapTrap character("Iheb");
-	ClapTrap character2(character);
-	ClapTrap character3;
+	ScavTrap scav;
+	ScavTrap scav2("Mark");
+	ScavTrap scav3(scav);
 	std::string	ops = "ib";
+
+	scav = scav2;
+	scav3 = scav2;
 	
-	character3 = character2;
-	character.attack(ops);
-	character.takeDamage(8);
-	character.beRepaired(6);
-	character.attack(ops);
-	character.takeDamage(10);
-	character.takeDamage(10);
-	character.beRepaired(4);
-	character.attack(ops);
-	character.attack(ops);
-	character.attack(ops);
-	character.beRepaired(4);
-	character.beRepaired(4);
-	character.attack(ops);
-	character.attack(ops);
-	character.attack(ops);
-	character.attack(ops);
-	
+	scav3.attack(ops);
+	scav3.takeDamage(8);
+	scav3.beRepaired(6);
+	scav3.attack(ops);
+	scav3.takeDamage(10);
+	scav3.guardGate();
+	scav3.takeDamage(100);
+	scav3.attack(ops);
+	scav3.beRepaired(4);
+	scav3.beRepaired(4);
+	scav3.attack(ops);
 }
