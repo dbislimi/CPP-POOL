@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:55:50 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/02 17:43:02 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/02 18:38:53 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap{
+class ScavTrap : virtual public ClapTrap{
 	
 	private:
 		ScavTrap();

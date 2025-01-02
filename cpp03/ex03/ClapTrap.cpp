@@ -6,31 +6,39 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 15:45:56 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/02 17:42:49 by dbislimi         ###   ########.fr       */
+/*   Updated: 2024/12/21 17:41:34 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap(void):	_name("Unnamed Clap"),
+							_hitPoints(10),
+							_energyPoints(10),
+							_attackDamage(0){
+	std::cout << "Default Clap constructor called" << std::endl;
+}
+
 ClapTrap::ClapTrap(std::string name):	_name(name),
 										_hitPoints(10),
 										_energyPoints(10),
 										_attackDamage(0){
+	std::cout << "Clap constructor called for " << _name << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other):	_name(other._name),
 											_hitPoints(other._hitPoints),
 											_energyPoints(other._energyPoints),
 											_attackDamage(other._attackDamage){
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Clap Copy constructor called" << std::endl;
 }
 
 ClapTrap::~ClapTrap(void){
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "Clap Destructor called for " << _name << std::endl;
 }
 
 ClapTrap	&ClapTrap::operator=(const ClapTrap &other){
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "Clap Copy assignment operator called" << std::endl;
 	if (this == &other)
 		return (*this);
 	this->_name = other._name;
@@ -76,20 +84,12 @@ void	ClapTrap::beRepaired(unsigned int amount){
 	
 	if (!this->_hitPoints)
 		return ;
-	if (this->_hitPoints == 10)
-	{
-		std::cout << "ClapTrap " << this->_name << " is already full life." << std::endl;
-		return ;
-	}
 	if (!this->_energyPoints)
 	{
 		std::cout << "ClapTrap " << this->_name << " failed to repair itself, no more energy points." << std::endl;
 		return ;
 	}
-	if (this->_hitPoints + amount > 10)
-		this->_hitPoints = 10;
-	else
-		this->_hitPoints += amount;
+	this->_hitPoints += amount;
 	--this->_energyPoints;
 	std::cout << "ClapTrap " <<  this->_name << " repaired itself ! Health: " 
 				<< this->_hitPoints << "(" << prevHit << "+" << amount << ")" << std::endl;

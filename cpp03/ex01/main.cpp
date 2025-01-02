@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 16:24:46 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/21 17:46:45 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/02 17:43:28 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 int	main(void)
 {
-	ScavTrap scav;
 	ScavTrap scav2("Mark");
-	ScavTrap scav3(scav);
+	ScavTrap scav3(scav2);
 	std::string	ops = "ib";
 
-	scav = scav2;
 	scav3 = scav2;
 	
 	scav3.attack(ops);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 15:39:04 by dbislimi          #+#    #+#             */
-/*   Updated: 2024/12/19 17:49:30 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/02 17:41:26 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ class ClapTrap{
 		int			_hitPoints;
 		int			_energyPoints;
 		int			_attackDamage;
+		ClapTrap(void);
 
 	public:
 
-		ClapTrap(void);
 		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap &other);
 		~ClapTrap(void);

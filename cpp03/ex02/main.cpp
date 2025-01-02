@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/19 17:55:50 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/02 17:43:02 by dbislimi         ###   ########.fr       */
+/*   Created: 2024/12/19 16:24:46 by dbislimi          #+#    #+#             */
+/*   Updated: 2025/01/02 18:04:12 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#include "FragTrap.hpp"
 
-#include "ClapTrap.hpp"
+int	main(void)
+{
+	FragTrap scav2("Mark");
+	FragTrap scav3(scav2);
+	std::string	ops = "ib";
 
-class ScavTrap : public ClapTrap{
+	scav3 = scav2;
 	
-	private:
-		ScavTrap();
-	
-	public:
-		ScavTrap(std::string name);
-		ScavTrap(const ScavTrap &other);
-		ScavTrap	&operator=(const ScavTrap &other);
-		~ScavTrap();
-
-		void	attack(const std::string &target);
-		void	guardGate();
-};
-
-#endif
+	scav3.attack(ops);
+	scav3.takeDamage(8);
+	scav3.beRepaired(6);
+	scav3.attack(ops);
+	scav3.takeDamage(10);
+	scav3.highFivesGuys();
+	scav3.takeDamage(100);
+	scav3.attack(ops);
+	scav3.beRepaired(4);
+	scav3.beRepaired(4);
+	scav3.attack(ops);
+}
