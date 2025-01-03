@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   AAnimal.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 19:39:23 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/03 17:51:31 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/03 17:55:43 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
 AAnimal::AAnimal(){
+	std::cout << "Animal default constructor called" << std::endl;
+}
+
+AAnimal::AAnimal(std::string type) : type(type){
 	std::cout << "Animal constructor called" << std::endl;
 }
 
@@ -34,8 +38,4 @@ AAnimal&	AAnimal::operator=(const AAnimal& other){
 
 std::string	AAnimal::getType() const{
 	return (this->type);
-}
-
-void	AAnimal::makeSound() const{
-	std::cout << "..." << std::endl;
 }

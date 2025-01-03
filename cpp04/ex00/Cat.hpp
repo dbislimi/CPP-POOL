@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 19:36:33 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/02 19:58:13 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/03 17:51:31 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "Animal.hpp"
 
-class Cat : public Animal{
+class Cat : public AAnimal{
 	public:
 		Cat();
 		Cat(const Cat& other);

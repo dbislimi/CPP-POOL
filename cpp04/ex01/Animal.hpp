@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 19:47:17 by dbislimi          #+#    #+#             */
+/*   Created: 2025/01/02 19:33:39 by dbislimi          #+#    #+#             */
 /*   Updated: 2025/01/03 17:51:31 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#ifndef ANIMAL_H
+# define ANIMAL_H
 
-Cat::Cat() : AAnimal(){
-	std::cout << "Cat constructor called" << std::endl;
-	this->type = "Cat";
-}
+#include <iostream>
 
-Cat::Cat(const Cat& other) : AAnimal(other){
-	std::cout << "Cat Copy constructor called" << std::endl;
-}
+class AAnimal{
+	protected:
+		std::string type;
+		
+	public:
+		AAnimal();
+		AAnimal(std::string type);
+		AAnimal(const AAnimal& other);
+		virtual ~AAnimal();
+		AAnimal&	operator=(const AAnimal& other);
 
-Cat::~Cat(){
-	std::cout << "Cat destructor called" << std::endl;
-}
+		std::string	getType() const;
+		virtual void	makeSound() const;
+		virtual void	floodBrain(std::string idea, unsigned int n);
+		virtual void	displayIdeas() const;
+};
 
-Cat&	Cat::operator=(const Cat& other){
-	std::cout << "Cat Copy assignment operator called" << std::endl;
-	if (this == &other)
-		return (*this);
-	this->type = other.type;
-	return (*this);
-}
-
-void	Cat::makeSound() const{
-	std::cout << "Miaouuuu" << std::endl;
-}
-
+#endif

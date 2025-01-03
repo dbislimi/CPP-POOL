@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 19:47:17 by dbislimi          #+#    #+#             */
+/*   Created: 2025/01/02 19:36:33 by dbislimi          #+#    #+#             */
 /*   Updated: 2025/01/03 17:51:31 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#ifndef CAT_H
+# define CAT_H
 
-Cat::Cat() : AAnimal(){
-	std::cout << "Cat constructor called" << std::endl;
-	this->type = "Cat";
-}
+#include "Animal.hpp"
+#include "Brain.hpp"
 
-Cat::Cat(const Cat& other) : AAnimal(other){
-	std::cout << "Cat Copy constructor called" << std::endl;
-}
+class Cat : public AAnimal{
+	private:
+		Brain	*brain;
+		
+	public:
+		Cat();
+		Cat(const Cat& other);
+		~Cat();
+		Cat&	operator=(const Cat& other);
+		
+		void	makeSound() const;
+		void	floodBrain(std::string idea, unsigned int n);
+		void	displayIdeas() const;
+};
 
-Cat::~Cat(){
-	std::cout << "Cat destructor called" << std::endl;
-}
-
-Cat&	Cat::operator=(const Cat& other){
-	std::cout << "Cat Copy assignment operator called" << std::endl;
-	if (this == &other)
-		return (*this);
-	this->type = other.type;
-	return (*this);
-}
-
-void	Cat::makeSound() const{
-	std::cout << "Miaouuuu" << std::endl;
-}
-
+#endif

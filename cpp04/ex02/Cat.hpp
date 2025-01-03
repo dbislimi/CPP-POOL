@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 19:35:31 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/03 17:51:31 by dbislimi         ###   ########.fr       */
+/*   Created: 2025/01/02 19:36:33 by dbislimi          #+#    #+#             */
+/*   Updated: 2025/01/03 17:52:37 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_H
-# define DOG_H
+#ifndef CAT_H
+# define CAT_H
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
+#include "Brain.hpp"
 
-class Dog : public AAnimal{
+class Cat : public AAnimal{
+	private:
+		Brain	*brain;
+		
 	public:
-		Dog();
-		Dog(const Dog& other);
-		~Dog();
-		Dog&	operator=(const Dog& other);
-
+		Cat();
+		Cat(const Cat& other);
+		~Cat();
+		Cat&	operator=(const Cat& other);
+		
 		void	makeSound() const;
+		void	floodBrain(std::string idea, unsigned int n);
+		void	displayIdeas() const;
 };
 
 #endif

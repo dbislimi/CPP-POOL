@@ -12,17 +12,17 @@
 
 #include "Cat.hpp"
 
-Cat::Cat() : AAnimal(){
-	std::cout << "Cat constructor called" << std::endl;
-	this->type = "Cat";
+Cat::Cat() : AAnimal("Cat"), brain(new Brain()){
+	std::cout << "Cat default constructor called" << std::endl;
 }
 
-Cat::Cat(const Cat& other) : AAnimal(other){
+Cat::Cat(const Cat& other) : AAnimal(other), brain(new Brain(*other.brain)){
 	std::cout << "Cat Copy constructor called" << std::endl;
 }
 
 Cat::~Cat(){
 	std::cout << "Cat destructor called" << std::endl;
+	delete brain;
 }
 
 Cat&	Cat::operator=(const Cat& other){
@@ -30,6 +30,7 @@ Cat&	Cat::operator=(const Cat& other){
 	if (this == &other)
 		return (*this);
 	this->type = other.type;
+	*this->brain = *other.brain;
 	return (*this);
 }
 
@@ -37,3 +38,16 @@ void	Cat::makeSound() const{
 	std::cout << "Miaouuuu" << std::endl;
 }
 
+void	Cat::floodBrain(std::string idea, unsigned int n){
+	if (n > 100)
+		n = 100;
+	for (unsigned int i = 0; i < n; ++i)
+		this->brain->ideas[i] = idea;
+}
+
+void	Cat::displayIdeas() const{
+	for (std::string* it = this->brain->ideas; (*it) != ""; ++it){
+		std::cout << (*it) << " ";
+	}
+	std::cout << std::endl;
+}

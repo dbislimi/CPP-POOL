@@ -13,6 +13,10 @@
 #include "Animal.hpp"
 
 AAnimal::AAnimal(){
+	std::cout << "Animal default constructor called" << std::endl;
+}
+
+AAnimal::AAnimal(std::string type) : type(type){
 	std::cout << "Animal constructor called" << std::endl;
 }
 
@@ -38,4 +42,14 @@ std::string	AAnimal::getType() const{
 
 void	AAnimal::makeSound() const{
 	std::cout << "..." << std::endl;
+}
+
+void	AAnimal::floodBrain(std::string idea, unsigned int n){
+	(void)idea;
+	(void)n;
+	std::cout << "Missing brain ..." << std::endl;
+}
+
+void	AAnimal::displayIdeas() const{
+	std::cout << "Missing brain ..." << std::endl;
 }
