@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 16:51:28 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/06 19:17:49 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/06 19:54:28 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_H
-# define FORM_H
+#ifndef AFORM_H
+# define AFORM_H
 
 #include "Bureaucrat.hpp"
 #include <iostream>
@@ -38,8 +38,9 @@ class AForm {
 		int			getGradeToSign() const;
 		int			getGradeToExec() const;
 		
-		void	beSigned(const Bureaucrat& bureaucrat);
-
+		void			beSigned(const Bureaucrat& bureaucrat);
+		virtual void	execute() = 0;
+		
 		class GradeTooHighException : public std::exception
 		{
 			public:

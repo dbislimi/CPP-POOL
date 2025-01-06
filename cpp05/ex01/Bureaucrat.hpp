@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:24:26 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/06 19:03:06 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/06 19:17:49 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "Form.hpp"
 #include <iostream>
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 	private:
@@ -38,7 +38,7 @@ class Bureaucrat {
 		const std::string&	getName() const;
 		int					getGrade() const;
 		
-		void	signForm(Form& form) const;
+		void	signForm(AForm& form) const;
 
 		class GradeTooHighException : public std::exception
 		{

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 16:58:06 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/06 19:17:49 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/06 19:48:56 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
 const char*	AForm::GradeTooHighException::what() const throw(){
 	return ("Grade too high!");
@@ -60,10 +60,10 @@ int		AForm::getGradeToExec() const{
 
 std::ostream&	operator<<(std::ostream& output, const AForm& instance){
 	if (instance.getSign() == 1)
-		output << "Form \"" << instance.getName() << "\": grade to sign=" << instance.getGradeToSign()
+		output << "AForm \"" << instance.getName() << "\": grade to sign=" << instance.getGradeToSign()
 			<< ", grade to execute=" << instance.getGradeToExec() << ", status: signed";
 	else
-		output << "Form \"" << instance.getName() << "\": grade to sign=" << instance.getGradeToSign()
+		output << "AForm \"" << instance.getName() << "\": grade to sign=" << instance.getGradeToSign()
 			<< ", grade to execute=" << instance.getGradeToExec() << ", status: not signed";
 	return (output);
 }
