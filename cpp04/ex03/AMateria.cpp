@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:25:46 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/07 16:51:22 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/08 10:35:04 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ AMateria::~AMateria(){
 }
 
 AMateria&	AMateria::operator=(const AMateria& instance){
+	if (this == &instance)
+		return (*this);
+	this->_type = instance._type;
 	return (*this);
 }
 

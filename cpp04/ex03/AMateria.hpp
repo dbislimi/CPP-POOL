@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:19:22 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/07 17:00:47 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/08 10:34:25 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 class AMateria {
 	protected:
-		const std::string	_type;
+		std::string	_type;
 		AMateria();
 
 	public:
