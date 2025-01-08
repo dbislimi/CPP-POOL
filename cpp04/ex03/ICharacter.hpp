@@ -6,13 +6,15 @@
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:52:07 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/07 17:03:16 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/08 14:12:25 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "AMateria.hpp"
+
+class AMateria;
 
 class ICharacter{
 	public:

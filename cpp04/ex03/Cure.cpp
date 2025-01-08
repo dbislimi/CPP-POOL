@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:44:47 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/07 16:51:40 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/08 14:25:58 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ Cure::~Cure(){
 }
 
 Cure&	Cure::operator=(const Cure& instance){
+	(void)instance;
 	return (*this);
 }
 
@@ -30,5 +31,5 @@ AMateria* Cure::clone() const{
 }
 
 void	Cure::use(ICharacter& target){
-	std::cout << "* heals " << target.getName() << "'s wounds *";
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }

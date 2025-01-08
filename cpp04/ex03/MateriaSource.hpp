@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 11:22:47 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/08 11:33:25 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/08 14:08:48 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,4 @@ class MateriaSource : public IMateriaSource{
 
 		void		learnMateria(AMateria* m);
 		AMateria*	createMateria(std::string const& type);
-}
+};

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:25:46 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/08 10:35:04 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/08 14:37:15 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ AMateria::~AMateria(){
 }
 
 AMateria&	AMateria::operator=(const AMateria& instance){
-	if (this == &instance)
-		return (*this);
-	this->_type = instance._type;
+	(void)instance;
 	return (*this);
 }
 
 std::string const& AMateria::getType() const{
 	return (this->_type);
+}
+
+void	AMateria::use(ICharacter& target){
+	std::cout << "AMateria use called on " << target.getName() << "." << std::endl;
 }

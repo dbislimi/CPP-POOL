@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:34:17 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/07 16:47:29 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/08 14:16:05 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 
 class Ice : public AMateria{
 	private:
-
+		Ice&	operator=(const Ice& instance);
+	
 	public:
 		Ice();
 		Ice(const Ice& instance);
 		~Ice();
-		Ice&	operator=(const Ice& instance);
 
 		AMateria* clone() const;
 		void	use(ICharacter& target);

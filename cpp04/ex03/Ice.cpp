@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:36:03 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/07 16:51:45 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/08 14:26:08 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ Ice::~Ice(){
 }
 
 Ice&	Ice::operator=(const Ice& instance){
+	(void)instance;
 	return (*this);
 }
 
@@ -30,6 +31,6 @@ AMateria* Ice::clone() const{
 }
 
 void	Ice::use(ICharacter& target){
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *";
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }
 

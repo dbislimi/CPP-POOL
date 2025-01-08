@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 11:27:07 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/08 11:33:32 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/08 14:20:48 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ MateriaSource::MateriaSource(const MateriaSource& instance){
 }
 
 MateriaSource::~MateriaSource(){
-	delete[] memory;
+	for (int i = 0; i < 4; ++i){
+		if (memory[i])
+			delete memory[i];
+	}
 }
 
 MateriaSource&	MateriaSource::operator=(const MateriaSource& instance){
@@ -47,5 +50,20 @@ MateriaSource&	MateriaSource::operator=(const MateriaSource& instance){
 }
 
 void	MateriaSource::learnMateria(AMateria* m){
-	
+	if (m == NULL)
+		return ;
+	for (int i = 0; i < 4; ++i){
+		if (this->memory[i] == NULL){
+			this->memory[i] = m;
+			break ;
+		}
+	}
+}
+
+AMateria*	MateriaSource::createMateria(std::string const& type){
+	for (int i = 0; i < 4; ++i){
+		if (type == this->memory[i]->getType())
+			return (this->memory[i]->clone());
+	}
+	return (NULL);
 }
