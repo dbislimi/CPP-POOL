@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 16:58:06 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/06 19:48:56 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/08 16:47:11 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@ const char*	AForm::GradeTooHighException::what() const throw(){
 
 const char*	AForm::GradeTooLowException::what() const throw(){
 	return ("Grade too low!");
+}
+
+const char* AForm::FormNotSignedException::what() const throw(){
+	return ("Form not signed!");
+}
+
+AForm::AForm() :_gradeToExec(-1), _gradeToSign(-1){
 }
 
 AForm::AForm(std::string name, int gradeToSign, int gradeToExec) : _name(name), _sign(0), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec){
@@ -73,4 +80,10 @@ void	AForm::beSigned(const Bureaucrat& bureaucrat){
 		this->_sign = 1;
 	else
 		throw GradeTooLowException();
+}
+
+void	AForm::execute(const Bureaucrat& bureaucrat) const{
+	if (bureaucrat.getGrade() > this->getGradeToExec())
+		throw Bureaucrat::GradeTooLowException();
+	this->exec();
 }

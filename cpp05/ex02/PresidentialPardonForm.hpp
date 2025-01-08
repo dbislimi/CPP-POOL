@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/06 19:21:18 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/08 16:48:23 by dbislimi         ###   ########.fr       */
+/*   Created: 2025/01/08 16:17:11 by dbislimi          #+#    #+#             */
+/*   Updated: 2025/01/08 16:48:50 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_H
-# define SHRUBBERYCREATIONFORM_H
+#ifndef PRESIDENTIALPARDONFORM_H
+# define PRESIDENTIALPARDONFORM_H
 
 #include "AForm.hpp"
-#include <fstream>
 
-class ShrubberyCreationForm : public AForm {
+class PresidentialPardonForm : public AForm{
 	private:
 		std::string	_target;
-		
-		ShrubberyCreationForm();
-		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& instance);
-		
+		PresidentialPardonForm();
+	
 	public:
-		ShrubberyCreationForm(std::string target);
-		ShrubberyCreationForm(const ShrubberyCreationForm& instance);
-		~ShrubberyCreationForm();
+		PresidentialPardonForm(std::string target);
+		PresidentialPardonForm(const PresidentialPardonForm& instance);
+		~PresidentialPardonForm();
+		PresidentialPardonForm&	operator=(const PresidentialPardonForm& instance);
 
 		void	exec() const;
+		
 };
 
 #endif

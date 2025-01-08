@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/06 19:21:18 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/08 16:48:23 by dbislimi         ###   ########.fr       */
+/*   Created: 2025/01/08 15:27:41 by dbislimi          #+#    #+#             */
+/*   Updated: 2025/01/08 16:48:32 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_H
-# define SHRUBBERYCREATIONFORM_H
+#ifndef ROBOTOMYREQUESTFORM_H
+# define ROBOTOMYREQUESTFORM_H
 
 #include "AForm.hpp"
-#include <fstream>
 
-class ShrubberyCreationForm : public AForm {
+class RobotomyRequestForm : public AForm{
 	private:
 		std::string	_target;
-		
-		ShrubberyCreationForm();
-		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& instance);
-		
+		RobotomyRequestForm();
+	
 	public:
-		ShrubberyCreationForm(std::string target);
-		ShrubberyCreationForm(const ShrubberyCreationForm& instance);
-		~ShrubberyCreationForm();
+		RobotomyRequestForm(std::string target);
+		RobotomyRequestForm(const RobotomyRequestForm& instance);
+		~RobotomyRequestForm();
+		RobotomyRequestForm&	operator=(const RobotomyRequestForm& instance);
 
 		void	exec() const;
+	
 };
 
 #endif

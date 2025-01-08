@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 16:51:28 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/06 19:54:28 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:02:36 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,14 @@ class AForm {
 		const int			_gradeToSign;
 		const int			_gradeToExec;
 		
-		AForm();
+		virtual void	exec() const = 0;
 		AForm&	operator=(const AForm& instance);
 		
 	public:
+		AForm();
 		AForm(std::string name, int gradeToSign, int gradeToExec);
 		AForm(const AForm& instance);
-		~AForm();
+		virtual ~AForm();
 
 		std::string	getName() const;
 		bool		getSign() const;
@@ -39,7 +40,7 @@ class AForm {
 		int			getGradeToExec() const;
 		
 		void			beSigned(const Bureaucrat& bureaucrat);
-		virtual void	execute() = 0;
+		void			execute(const Bureaucrat& bureaucrat) const;
 		
 		class GradeTooHighException : public std::exception
 		{
@@ -47,6 +48,11 @@ class AForm {
 				const char* what() const throw();
 		};
 		class GradeTooLowException : public std::exception
+		{
+			public:
+				const char* what() const throw();
+		};
+		class FormNotSignedException : public std::exception
 		{
 			public:
 				const char* what() const throw();

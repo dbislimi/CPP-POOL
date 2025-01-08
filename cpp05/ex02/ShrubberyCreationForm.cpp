@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 19:25:13 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/06 20:16:35 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/08 16:48:12 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
+
+ShrubberyCreationForm::ShrubberyCreationForm(){
+}
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), _target(target){
 }
@@ -22,11 +25,16 @@ ShrubberyCreationForm::~ShrubberyCreationForm(){
 }
 
 ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationForm& instance){
-	(void)instance;
+	if (this == &instance)
+		return (*this);
+	this->_target = instance._target;
 	return (*this);
 }
 
-void	ShrubberyCreationForm::execute(){
+void	ShrubberyCreationForm::exec() const{
+	if (this->getSign() == false)
+		throw AForm::FormNotSignedException();
+		
 	std::ofstream	file((this->_target + "_shrubbery").c_str());
 
 	if (!file){

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:24:26 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/06 19:18:00 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/08 16:55:09 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class Bureaucrat {
 		int					getGrade() const;
 		
 		void	signForm(AForm& form) const;
-
+		void	executeForm(const AForm& form);
 		class GradeTooHighException : public std::exception
 		{
 			public:
