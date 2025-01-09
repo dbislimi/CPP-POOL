@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 16:58:06 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/08 16:47:11 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/09 16:29:35 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ const char* AForm::FormNotSignedException::what() const throw(){
 	return ("Form not signed!");
 }
 
-AForm::AForm() :_gradeToExec(-1), _gradeToSign(-1){
+AForm::AForm() : _name("null"), _sign(0), _gradeToSign(-1), _gradeToExec(-1){
 }
 
 AForm::AForm(std::string name, int gradeToSign, int gradeToExec) : _name(name), _sign(0), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec){

@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:37:30 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/08 16:48:44 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/09 16:34:34 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ RobotomyRequestForm::RobotomyRequestForm(){
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45), _target(target){
+}
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& instance) : AForm("RobotomyRequestForm", 72, 45), _target(instance._target){
 }
 
 RobotomyRequestForm::~RobotomyRequestForm(){

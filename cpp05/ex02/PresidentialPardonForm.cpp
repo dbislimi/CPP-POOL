@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:37:30 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/08 16:49:00 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/09 16:25:47 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,12 @@
 PresidentialPardonForm::PresidentialPardonForm(){
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", 72, 45), _target(target){
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", 25, 5), _target(target){
 }
+
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& instance) : AForm("PresidentialPardonForm", 25, 5), _target(instance._target){
+}
+
 
 PresidentialPardonForm::~PresidentialPardonForm(){
 }
