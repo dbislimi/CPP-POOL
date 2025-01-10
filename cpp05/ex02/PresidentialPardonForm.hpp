@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:17:11 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/09 16:32:41 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/10 16:32:19 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PRESIDENTIALPARDONFORM_H
 
 #include "AForm.hpp"
-#include <cstdlib>
 
 class PresidentialPardonForm : public AForm{
 	private:

@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:37:30 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/09 16:34:34 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/10 17:49:10 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& i
 void	RobotomyRequestForm::exec() const{
 	if (this->getSign() == false)
 		throw AForm::FormNotSignedException();
-
+	
+	srand(std::time(NULL));
 	int	i = rand() % 2;
-	std::cout << "Drrrrrrr.. ";
-
+	std::cout << " Drrrrrrr.. ";
 	switch (i){
 		case 0:
 			std::cout << this->_target << " has been robotomized successfully.🎉";
