@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:40:46 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/10 17:54:49 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/13 16:49:39 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,24 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int	main(){
-	AForm* form[3];
-	Bureaucrat	b1("mahdi");
-	Bureaucrat	b2("Billel");
-	Bureaucrat	b3("yahya");
-	form[0] = new ShrubberyCreationForm("home");
-	form[1] = new RobotomyRequestForm("bilel");
-	form[2] = new PresidentialPardonForm("Dylan");
+	Bureaucrat	b("charles");
+	Intern intern;
+	AForm*	form;
+	std::string tests[5] = {"Shrubbery Creation", "Robotomy Request",
+				 "Presidential Pardon", "Missing launch", ""};
 	
-	b1.upgrade(13);
-	b1.executeForm(*form[0]);
-	b1.signForm(*form[0]);
-	b1.executeForm(*form[0]);
-	b1.signForm(*form[1]);
-	b1.signForm(*form[2]);
-	std::cout << std::endl;
-	b2.upgrade(78);
-	b2.signForm(*form[0]);
-	b2.executeForm(*form[1]);
-	b2.upgrade(30);
-	b2.signForm(*form[1]);
-	b2.executeForm(*form[1]);
-	b2.signForm(*form[2]);
-	std::cout << std::endl;
-	b3.upgrade(145);
-	b3.signForm(*form[0]);
-	b3.signForm(*form[1]);
-	b3.executeForm(*form[2]);
-	b3.signForm(*form[2]);
-	b3.executeForm(*form[2]);
-	for (int i = 0; i < 3; ++i)
-		delete form[i];
+	b.upgrade(149);
+	for (int i = 0; i < 5; ++i){
+		std::cout << std::endl;
+		form = intern.makeForm(tests[i], "nobody");
+		if (form == NULL)
+			continue ;
+		b.signForm(*form);
+		b.executeForm(*form);
+		delete form;
+	}
 	return (0);
 }

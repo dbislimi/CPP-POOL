@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:37:30 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/10 17:49:10 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/13 16:45:02 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	RobotomyRequestForm::exec() const{
 	
 	srand(std::time(NULL));
 	int	i = rand() % 2;
-	std::cout << " Drrrrrrr.. ";
+	std::cout << "Drrrrrrr.. ";
 	switch (i){
 		case 0:
 			std::cout << this->_target << " has been robotomized successfully.🎉";
