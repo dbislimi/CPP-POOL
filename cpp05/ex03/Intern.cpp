@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 18:00:48 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/13 16:49:10 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/13 18:35:59 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ AForm*	Intern::makeForm(std::string name, std::string target){
 	std::string trim = myTrim(name);
 	
 	if (trim == ""){
-		std::cout << "Intern cannot read in your mind, be specific." << std::endl;
+		std::cout << "Intern cannot read your mind, please be specific." << std::endl;
 		return (NULL);
 	}
 	for (int i = 0; i < 3; ++i){
