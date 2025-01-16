@@ -1,4 +1,4 @@
-SRCS = main.cpp ScalarConverter.cpp
+SRCS = main.cpp ScalarConverter.cpp utils.cpp
 OBJS = ${SRCS:.cpp=.o}
 
 NAME 		= a.out

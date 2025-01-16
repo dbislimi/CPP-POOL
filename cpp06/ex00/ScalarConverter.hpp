@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:00:48 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/14 17:13:42 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/16 17:13:14 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define SCALARCONVERTER_H
 
 #include <iostream>
+#include <cstring>
+#include <cstdlib>
+#include <iomanip>
+#include <climits>
 
 class ScalarConverter {
 	private:
@@ -26,5 +30,8 @@ class ScalarConverter {
 		
 		static void	convert(std::string str);
 };
+
+bool	isNaN(std::string& str);
+bool	isnum(std::string &str);
 
 #endif
