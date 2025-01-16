@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 17:00:48 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/14 17:13:42 by dbislimi         ###   ########.fr       */
+/*   Created: 2025/01/14 15:39:09 by dbislimi          #+#    #+#             */
+/*   Updated: 2025/01/14 17:05:02 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_H
-# define SCALARCONVERTER_H
+#include "Serializer.hpp"
 
-#include <iostream>
-
-class ScalarConverter {
-	private:
-		ScalarConverter&	operator=(const ScalarConverter& instance);
-		ScalarConverter(const ScalarConverter& instance);
-		ScalarConverter();
-		
-	public:
-		~ScalarConverter();
-		
-		static void	convert(std::string str);
-};
-
-#endif
+int	main(){
+	Data		*d = new Data('e', 5);
+	Data		*e;
+	uintptr_t	u;
+	
+	u = Serializer::serialize(d);
+	e = Serializer::deserialize(u);
+	
+	std::cout << *d << std::endl << *e << std::endl;
+	
+	delete d;
+}

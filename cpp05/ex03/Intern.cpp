@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 18:00:48 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/13 18:35:59 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/14 14:12:49 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,14 @@ AForm*	Intern::makeForm(std::string name, std::string target){
 	std::string	names[3] = {"shrubberycreation", "robotomyrequest", "presidentialpardon"};
 	std::string trim = myTrim(name);
 	
-	if (trim == ""){
-		std::cout << "Intern cannot read your mind, please be specific." << std::endl;
-		return (NULL);
-	}
 	for (int i = 0; i < 3; ++i){
 		if (trim == names[i])
 			return ((this->*newForm[i])(target));
 	}
-	std::cout << "Making a " << name << " form is not part of intern's skills." << std::endl;
+	if (trim == "")
+		std::cout << "Intern cannot read your mind, please be specific." << std::endl;
+	else
+		std::cout << "Making a " << name << " form is not part of intern's skills." << std::endl;
 	return (NULL);
 }
 

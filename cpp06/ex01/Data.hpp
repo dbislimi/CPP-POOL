@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 17:00:48 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/14 17:13:42 by dbislimi         ###   ########.fr       */
+/*   Created: 2025/01/14 14:25:20 by dbislimi          #+#    #+#             */
+/*   Updated: 2025/01/14 17:04:20 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_H
-# define SCALARCONVERTER_H
+#ifndef DATA_H
+# define DATA_H
 
 #include <iostream>
 
-class ScalarConverter {
+class Data {
 	private:
-		ScalarConverter&	operator=(const ScalarConverter& instance);
-		ScalarConverter(const ScalarConverter& instance);
-		ScalarConverter();
-		
+		char	_c;
+		int		_i;
+
+	
 	public:
-		~ScalarConverter();
-		
-		static void	convert(std::string str);
+		Data();
+		Data(char c, int i);
+		Data(const Data& instance);
+		~Data();
+		Data&	operator=(const Data& instance);
+
+		char	getC() const;
+		int		getI() const;
 };
+
+std::ostream	&operator<<(std::ostream &output, const Data& instance);
 
 #endif

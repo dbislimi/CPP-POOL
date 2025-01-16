@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:06:55 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/13 18:33:14 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/14 17:14:34 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ ScalarConverter&	ScalarConverter::operator=(const ScalarConverter& instance){
 	return (*this);
 }
 
-void	ScalarConverter::convert(int c){
-	std::cout << "char: " << static_cast<char>(c) << std::endl
-				<< "int: " << c << std::endl
-				<< "float: " << static_cast<float>(c) << std::endl
-				<< "double: " << static_cast<double>(c) << std::endl;
-}
+void	ScalarConverter::convert(std::string str){
+	float	f = std::atof(str.c_str());
+	std::cout << "char: " << static_cast<char>(f) << std::endl
+				<< "int: " << static_cast<int>(f) << std::endl
+				<< "float: " << (f) << std::endl
+				<< "double: " << static_cast<double>(f) << std::endl;
+} // UTILISER AFTOL (ATOI POUR FLOAT) ET APRES TOUT CAST
