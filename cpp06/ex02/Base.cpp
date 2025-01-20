@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.cpp                                     :+:      :+:    :+:   */
+/*   Base.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 14:20:24 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/20 17:15:56 by dbislimi         ###   ########.fr       */
+/*   Created: 2025/01/20 17:54:04 by dbislimi          #+#    #+#             */
+/*   Updated: 2025/01/20 18:10:13 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Serializer.hpp"
+#include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
 
-Serializer::Serializer(){
+Base::~Base(){
 }
 
-Serializer::Serializer(const Serializer& _){
-	(void)_;
+Base*	genA(){
+	return (new A);
 }
 
-Serializer::~Serializer(){
+Base*	genB(){
+	return (new B);
 }
 
-Serializer&	Serializer::operator=(const Serializer& _){
-	(void)_;
-	return (*this);
+Base*	genC(){
+	return (new C);
 }
 
-uintptr_t	Serializer::serialize(Data* ptr){
-	return (reinterpret_cast<uintptr_t>(ptr));
-}
-
-Data*		Serializer::deserialize(uintptr_t raw){
-	return (reinterpret_cast<Data*>(raw));
+Base*	generate(){
+	Base*(*Base[3])() = {&genA, &genB, &genC};
+	int	r;
+	
+	srand(time(NULL));
+	r = rand() % 2;
+	
 }

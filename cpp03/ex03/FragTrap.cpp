@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:51:47 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/02 18:42:17 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:58:33 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
+
+FragTrap::FragTrap(){
+}
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name){
 	this->_hitPoints = 100;

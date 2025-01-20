@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 15:45:56 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/02 17:42:49 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:54:15 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap(){
+}
 
 ClapTrap::ClapTrap(std::string name):	_name(name),
 										_hitPoints(10),

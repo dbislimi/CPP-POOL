@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 18:02:42 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/02 17:43:40 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:55:13 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
+
+ScavTrap::ScavTrap(){
+}
 
 ScavTrap::ScavTrap(std::string name) :	ClapTrap(name){
 	this->_hitPoints = 100;
