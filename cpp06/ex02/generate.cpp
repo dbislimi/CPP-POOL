@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   generate.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 17:17:09 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/21 16:57:39 by dbislimi         ###   ########.fr       */
+/*   Created: 2025/01/21 16:55:02 by dbislimi          #+#    #+#             */
+/*   Updated: 2025/01/21 16:57:47 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BASE_H
-# define BASE_H
+#include "Base.hpp"
+# include "A.hpp"
+# include "B.hpp"
+# include "C.hpp"
 
-# include <cstdlib>
-# include <time.h>
-# include <iostream>
+Base*	genA(){
+	return (new A);
+}
 
-class Base {
-	public:
-		virtual ~Base();
-};
+Base*	genB(){
+	return (new B);
+}
 
-Base*	generate(void);
-void	identify(Base* p);
-void	identify(Base& p);
+Base*	genC(){
+	return (new C);
+}
 
-#endif
+Base*	generate(){
+	Base*(*gen[3])() = {&genA, &genB, &genC};
+	int	r;
+	
+	srand(time(NULL));
+	r = rand() % 3;
+	return (gen[r]());
+}
