@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 17:23:36 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/23 22:15:08 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/23 23:07:56 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,37 +18,28 @@
 template< typename T>
 class Array {
 	private:
-		T			_content;
-		Array<T>*	_next;
+		T*				_array;
+		unsigned int	_size;
 	
 	public:
 		Array();
 		Array(unsigned int n);
 		Array(const Array<T>& instance);
 		Array<T>&	operator=(const Array<T>& instance);
-		Array<T>&	operator=(T content);
 		~Array();
-		T&	operator[](int index);	
-		size_t		size();
-		T&			getContent() {return (this->_content);}
-		Array<T>*	getNext() {return (this->_next);}
-};
+		T&	operator[](unsigned int index);
+		
+		unsigned int		size();
 
+};
 #include "Array.tpp"
 
 template< typename T >
-std::ostream&	operator<<(std::ostream& output, Array<T>& v){	
-	output << v.getContent();
-	return (output);
-}
-
-template< typename T >
 void	print_array(Array<T>& arr){
-	Array<T>*	node = &arr;
-	while (node){
-		std::cout << node->getContent() << ", ";
-		node = node->getNext();
-	}
+	unsigned int	i = 0;
+
+	while (i < arr.size())
+		std::cout << arr[i++] << ", ";
 	std::cout << std::endl;
 }
 
