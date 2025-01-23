@@ -1,21 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Array.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/21 16:26:07 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/23 16:05:16 by dbislimi         ###   ########.fr       */
+/*   Created: 2025/01/23 17:26:34 by dbislimi          #+#    #+#             */
+/*   Updated: 2025/01/23 17:29:46 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Base.hpp"
+#include "Array.hpp"
 
-int main(){
-	Base*	b = generate();
-
-	identify(b);
-	identify(*b);
-	delete b;
+Array::Array() : _x(0), _y(0){
 }

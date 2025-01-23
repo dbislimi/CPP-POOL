@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   identify.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:56:20 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/21 16:57:54 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:04:15 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ void	identify(Base& p){
 			dynamic_cast<B&>(p);
 		}
 		catch (std::exception &e){
+			try{
+				dynamic_cast<C&>(p);
+			}
+			catch (std::exception &e){
+				return ;
+			}
 			std::cout << "type: C" << std::endl;
 			return ;
 		}
