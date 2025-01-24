@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:00:48 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/16 17:13:14 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/24 14:54:13 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ class ScalarConverter {
 };
 
 bool	isNaN(std::string& str);
-bool	isnum(std::string &str);
+bool	isNum(std::string &str, size_t len);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:44:37 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/16 17:01:41 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/24 17:18:17 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,22 @@ bool	isNaN(std::string& str){
 	return (false);
 }
 
-bool	isnum(std::string &str)
+bool	isNum(std::string &str, size_t len)
 {
-	size_t	size;
-	size_t	i;
-	bool	point = false;
+	bool	sign = false;
+	bool	coma = false;
 	
-	size = str.length();
-	i = -1;
-	if (str[0] == '+' || str[0] == '-')
-		i = 0;
-	while (++i < size){
-		if (!isdigit(str[i])){
-			if (str[i] == '.' && point == false){
-				point = true;
+	for (size_t i = 0; i < len; ++i){
+		if (isdigit(str[i]))
 				continue ;
-			}
-			else if (i == size - 1 && str[i] == 'f')
-				break ;
+		else if ((str[i] == '+' || str[i] == '-') && sign == false)
+			sign = true;
+		else if (str[i] == '.' && coma == false)
+			coma = true;
+		else if (i == len - 1 && str[i] == 'f')
+				continue ;
+		else
 			return (false);
-		}
-	}	
+	}
 	return (true);
 }
