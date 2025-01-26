@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 17:12:50 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/26 13:47:35 by dbislimi         ###   ########.fr       */
+/*   Created: 2025/01/26 14:22:07 by dbislimi          #+#    #+#             */
+/*   Updated: 2025/01/26 15:58:36 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#ifndef EASYFIND_H
+# define EASYFIND_H
 
-int main(int ac, char** av){
-	if (ac == 2)
-		ScalarConverter::convert(av[1]);
+#include <iostream>
+#include <map>
+#include <list>
+#include <vector>
+#include <algorithm>
+#include <iterator>
+
+template< typename T >
+typename T::iterator	easyfind(T& container, int n){
+	return (std::find(container.begin(), container.end(), n));
 }
+
+#endif
