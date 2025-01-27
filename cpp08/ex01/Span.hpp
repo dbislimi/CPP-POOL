@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 16:07:04 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/01/26 17:25:18 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:20:05 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ class Span {
 		void	addNumber(int i);
 		int		shortestSpan();
 		int		longestSpan();
+		void	addList(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 
 		class MaxCapacity : public std::exception{
 			public:
@@ -41,10 +42,10 @@ class Span {
 				}
 		};
 
-		class OnlyOne : public std::exception{
+		class NotEnough : public std::exception{
 			public:
 				const char*	what() const throw(){
-					return ("Span contains only one element.");
+					return ("Not enough elements.");
 				}
 		};
 };
