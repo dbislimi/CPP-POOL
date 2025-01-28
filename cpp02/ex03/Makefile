@@ -1,17 +1,17 @@
 SRCS = main.cpp Point.cpp Fixed.cpp bsp.cpp
-OBJS = ${SRCS:.cpp=.o}
+OBJS = $(SRCS:.cpp=.o)
 
 NAME 		= triangle
 CC 			= c++
 CPPFLAGS 	= -Wall -Wextra -Werror -std=c++98 -g3
 RM 			= rm -rf
 
-all : ${NAME}
+all : $(NAME)
 
 ${NAME} : ${OBJS}
 	${CC} ${CPPFLAGS} -o ${NAME} ${OBJS} 
 
-%.o: %.c
+%.o: %.cpp
 	$(CC) $(CPPFLAGS) -c -o $@ $<
 
 clean:

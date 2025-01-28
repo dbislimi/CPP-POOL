@@ -1,24 +1,24 @@
 SRCS = main.cpp AAnimal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
-OBJS = ${SRCS:.cpp=.o}
+OBJS = $(SRCS:.cpp=.o)
 
 NAME 		= a.out
 CC 			= c++
 CPPFLAGS 	= -Wall -Wextra -Werror -std=c++98 -g3
 RM 			= rm -rf
 
-all : ${NAME}
+all : $(NAME)
 
-${NAME} : ${OBJS}
-	${CC} ${CPPFLAGS} -o ${NAME} ${OBJS} 
+$(NAME) : $(OBJS)
+	$(CC) $(CPPFLAGS) -o $(NAME) $(OBJS)
 
-%.o: %.c
+%.o: %.cpp
 	$(CC) $(CPPFLAGS) -c -o $@ $<
 
 clean:
-	${RM} ${OBJS}
+	$(RM) $(OBJS)
 
 fclean: clean
-	${RM} ${NAME}
+	$(RM) $(NAME)
 
 re: fclean all
 
