@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 16:21:49 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/01 20:28:25 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/02 00:07:57 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 class BitcoinExchange {
 	private:
 		std::map<std::string, float>	_data;
+		void	findDate(const std::string& date);
 		BitcoinExchange();
 
 	public:
@@ -28,7 +29,7 @@ class BitcoinExchange {
 		~BitcoinExchange();
 		BitcoinExchange&	operator=(const BitcoinExchange& instance);
 
-		// void	ana
+		void	analyse(std::string filename);
 
 		class DataFile : public std::exception{
 			public:
@@ -42,6 +43,12 @@ class BitcoinExchange {
 					return ("Error: Data filename is not valid.");
 				}
 		};
+		class InvalidDate : public std::exception{
+			public:
+				const char*	what() const throw(){
+					return ("Error: Invalid date in data file");
+				}
+		};
 };
 
 typedef struct s_strings
@@ -50,6 +57,15 @@ typedef struct s_strings
 	std::string	value;
 }	t_strings;
 
-bool	split(std::string s, t_strings* strs);
+typedef struct s_date
+{
+	int	year;
+	int	month;
+	int	date;
+}	t_date;
+
+bool	split(std::string s, char c, t_strings* strs);
+bool	isValidDate(const std::string& date);
+bool	isFloat(std::string &str);
 
 #endif
