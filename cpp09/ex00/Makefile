@@ -1,4 +1,4 @@
-SRCS = main.cpp Base.cpp generate.cpp identify.cpp
+SRCS = main.cpp BitcoinExchange.cpp utils.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 NAME 		= a.out
