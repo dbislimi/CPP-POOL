@@ -1,7 +1,7 @@
 SRCS = main.cpp BitcoinExchange.cpp utils.cpp
 OBJS = $(SRCS:.cpp=.o)
 
-NAME 		= a.out
+NAME 		= btc
 CC 			= c++
 CPPFLAGS 	= -Wall -Wextra -Werror -std=c++98 -g3
 RM 			= rm -rf

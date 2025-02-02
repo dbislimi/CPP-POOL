@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 16:26:35 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/02 00:26:26 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/02 21:03:30 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ BitcoinExchange::BitcoinExchange(std::string filename){
 	std::ifstream	file;
 	std::string		buff;
 	t_strings		strs;
+	
 	
 	if (std::string(filename.c_str() + filename.length() - 4) != ".csv")
 		throw BitcoinExchange::DataFilename();
@@ -36,6 +37,7 @@ BitcoinExchange::BitcoinExchange(std::string filename){
 			continue ;
 		if (!isValidDate(strs.date))
 			throw BitcoinExchange::InvalidDate();
+		this->_content += buff;
 		this->_data[strs.date] = atof(strs.value.c_str());
 	}
 }
@@ -50,20 +52,42 @@ BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& instance){
 	return (*this);
 }
 
-void	BitcoinExchange::findDate(const std::string& date){
+std::map<std::string, float>::iterator	BitcoinExchange::findMatch(const std::string& date){
+	std::map<std::string, float>::iterator	it;
+	std::string	str;
 	size_t	first;
 	size_t	second;
-	int	YMD[3];
+	int		YMD[3];
 
 	first = date.find_first_of('-');
 	second = date.find_last_of('-');
-	if (first != 4 || second - first != 3 || date.find_last_of("0123456789") != 9){
-		std::cout << "invalid date format" << std::endl;
-	}
 	YMD[0] = atoi(date.substr(0, first).c_str());
 	YMD[1] = atoi(date.substr(first + 1, second).c_str());
 	YMD[2] = atoi(date.substr(second + 1).c_str());
-	std::cout << "date: " << YMD[0] << " - " << YMD[1] << " - " << YMD[2] << std::endl;
+	while (this->_content.find(convert(YMD, 1)) == std::string::npos){
+		if (YMD[0] <= 2008)
+			return (this->_data.end());
+		--YMD[0];
+		YMD[1] = 12;
+		YMD[2] = 31;
+	}
+	while (this->_content.find(convert(YMD, 2)) == std::string::npos){
+		YMD[0] -= (YMD[1] == 1);
+		if (YMD[0] == 2008)
+			return (this->_data.end());
+		YMD[1] = (YMD[1] + 10) % 12 + 1;
+		YMD[2] = 31;
+	}
+	while (this->_content.find(convert(YMD, 3)) == std::string::npos){
+		YMD[0] -= (YMD[1] == 1 && YMD[2] == 1);
+		if (YMD[0] == 2008)
+			return (this->_data.end());
+		if (YMD[2] == 1){
+			YMD[1] = (YMD[1] + 10) % 12 + 1;
+		}
+		YMD[2] = (YMD[2] + 29) % 31 + 1;
+	}
+	return (this->_data.find(convert(YMD, 3)));
 }
 
 void	BitcoinExchange::analyse(std::string filename){
@@ -73,8 +97,10 @@ void	BitcoinExchange::analyse(std::string filename){
 	t_strings		strs;
 
 	file.open(filename.c_str());
-	if (file.fail())
-		throw std::exception();
+	if (file.fail()){
+		std::cout << "Error: Failed to analyse " << filename << std::endl;
+		return ;
+	}
 	while (1){
 		buff.clear();
 		std::getline(file, buff);
@@ -90,7 +116,6 @@ void	BitcoinExchange::analyse(std::string filename){
 			std::cout << "Error: invalid date => " << buff << std::endl;
 			continue ;
 		}
-		std::cout << atof(strs.value.c_str()) << std::endl;
 		if (!isFloat(strs.value)){
 			if (atof(strs.value.c_str()) < 0){
 				std::cout << "Error: not a positive number." << std::endl;
@@ -101,11 +126,13 @@ void	BitcoinExchange::analyse(std::string filename){
 				continue ;
 			}
 		}
-		// it = this->_data.find(strs.date);
-		// if (it == _data.end())
-		// 	continue ;
-		// this->findDate(it->first);
-		// std::cout << it->first << " " << it->second << std::endl;
-		// std::cout << '[' << strs.date << ']' << std::endl << '['<< strs.value << ']' << std::endl;
+		it = this->_data.find(strs.date);
+		if (it == _data.end())
+			it = this->findMatch(strs.date);
+		if (it == this->_data.end()){
+			std::cout << "Error: no matching date found in BE for " << buff << std::endl;
+			continue ;
+		}
+		std::cout << strs.date << " => " << strs.value << " = " << atof(strs.value.c_str()) * it->second << std::endl;
 	}
 }

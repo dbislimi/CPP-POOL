@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 16:21:49 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/02 00:07:57 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/02 20:48:27 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@
 #include <map>
 #include <fstream>
 #include <cstdlib>
+#include <iomanip>
+#include <sstream>
 
 class BitcoinExchange {
 	private:
+		std::string						_content;
 		std::map<std::string, float>	_data;
-		void	findDate(const std::string& date);
+		std::map<std::string, float>::iterator	findMatch(const std::string& date);
 		BitcoinExchange();
 
 	public:
@@ -67,5 +70,6 @@ typedef struct s_date
 bool	split(std::string s, char c, t_strings* strs);
 bool	isValidDate(const std::string& date);
 bool	isFloat(std::string &str);
+std::string	convert(int YMD[3], int	n);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 19:37:31 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/02 00:13:23 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/02 20:48:31 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ bool	isValidDate(const std::string& date){
 
 	first = date.find_first_of('-');
 	second = date.find_last_of('-');
-	// std::cout << date << std::endl;
 	if (first != 4 || second - first != 3 || date.find_last_of("0123456789") != 9)
 		return (false);
 	YMD[0] = atoi(date.substr(0, first).c_str());
@@ -72,3 +71,15 @@ bool	isFloat(std::string &str){
 	}
 	return (coma);
 }
+
+std::string	convert(int YMD[3], int	n){
+	std::stringstream	ss;
+
+	for (int i = 0; i < n; ++i){
+		ss << std::setw(2) << std::setfill('0') << YMD[i];
+		if (i != 2)
+			ss << '-';
+	}
+	return (ss.str());
+}
+
