@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 16:21:49 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/02 20:48:27 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:47:04 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,6 @@ typedef struct s_strings
 	std::string	date;
 	std::string	value;
 }	t_strings;
-
-typedef struct s_date
-{
-	int	year;
-	int	month;
-	int	date;
-}	t_date;
 
 bool	split(std::string s, char c, t_strings* strs);
 bool	isValidDate(const std::string& date);
