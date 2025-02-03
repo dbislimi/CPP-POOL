@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:53:38 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/03 18:34:12 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/03 18:55:11 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ static bool	isop(char c){
 bool	RPN::calculate(char op){
 	int	a = 0;
 	int	b = 0;
-	switch (op)
-	{
+	switch (op){
 		case '+':
 			a = this->_stack.top();
 			this->_stack.pop();
@@ -67,7 +66,11 @@ RPN::RPN(std::string op){
 		if (std::isdigit(op[i]))
 			this->_stack.push(op[i] - '0');
 		else if (isop(op[i])){
-			if (!this->calculate(op[i])){
+			if (this->_stack.size() < 2){
+				std::cerr << "Error: not a RPN." << std::endl;
+				return ;
+			}
+			else if (!this->calculate(op[i])){
 				std::cerr << "Error: division by 0." << std::endl;
 				return ;
 			}
@@ -76,6 +79,10 @@ RPN::RPN(std::string op){
 			std::cerr << "Error: unvalid character." << std::endl;
 			return ;
 		}
+	}
+	if (this->_stack.size() != 1){
+		std::cerr << "Error: not a RPN." << std::endl;
+		return ;
 	}
 	std::cout << this->_stack.top() << std::endl;
 }
