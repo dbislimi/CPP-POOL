@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:44:08 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/15 16:18:49 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/15 17:57:22 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@ PmergeMe::PmergeMe(int ac, char** av){
 		this->_v.push_back(atol(av[i]));
 	}
 	print(this->_v);
-	for (size_t i = 0; i <= this->_v.size() / 2; i += i + 1){
-		swap(this->_v, i);
-		// std::cout << "i: " << i + 1 << std::endl;
+	for (size_t p = 1; p <= this->_v.size() / 2; p = 2 * p){
+		swap(this->_v, p);
 		print(this->_v);
 	}
 }

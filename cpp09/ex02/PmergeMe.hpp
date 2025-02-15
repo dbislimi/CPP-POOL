@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:52:04 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/15 16:59:58 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/15 17:56:28 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,11 @@ class PmergeMe {
 		template< typename T >
 		void	swap(T& t, int p){
 			size_t	size = t.size();
-			
-			for (size_t	j = 0; j + 2 * p + 1 < size; j += 2 + 2 * p){
-				if (t[j + p] <= t[j + 2 * p + 1])
-					continue ;
-				for (int i = 0; i <= p; ++i){
-					unsigned int temp = t[i + j];
-					t[i + j] = t[i + j + p + 1;];
-					t[i + j + p + 1;] = temp;
-				}
-			}
+
+			for (size_t	j = 0; j + 2 * p - 1 < size; j += 2 * p)
+				if (t[j + p - 1] > t[j + p * 2 - 1])
+					for (int i = 0; i < p; ++i)
+						std::swap(t[i + j], t[i + j + p]);
 		}
 		PmergeMe();
 		PmergeMe(const PmergeMe& instance);
