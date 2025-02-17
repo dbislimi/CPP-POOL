@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:44:08 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/15 17:57:22 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:13:24 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,7 @@ PmergeMe::PmergeMe(int ac, char** av){
 		}
 		this->_v.push_back(atol(av[i]));
 	}
-	print(this->_v);
-	for (size_t p = 1; p <= this->_v.size() / 2; p = 2 * p){
-		swap(this->_v, p);
-		print(this->_v);
-	}
+	sortVector();
 }
 
 PmergeMe::PmergeMe(const PmergeMe& instance){
@@ -42,4 +38,30 @@ PmergeMe::~PmergeMe(){
 PmergeMe&	PmergeMe::operator=(const PmergeMe& instance){
 	(void)instance;
 	return (*this);
+}
+
+size_t	PmergeMe::jacobsthal(int n){
+	return ((pow(2, n + 1) + pow(-1, n)) / 3);
+}
+void	PmergeMe::sortVector(){
+	std::vector<unsigned int>	pend;
+	std::vector<unsigned int>	odd;
+	size_t	e = 2;
+	
+	for (; e <= this->_v.size() / 2; e *= 2){
+		swapPairs(this->_v, e);
+		print(this->_v);
+	}
+	for (e /=8; e >= 1; e /= 2){
+		std::cout << e << std::endl;
+		push_odd(_v, odd, e);
+	std::cout << "main: ";
+	print(_v);
+		pushInPend(_v, pend, e);
+		break ;
+	}
+	std::cout << "odd: ";
+	print(odd);
+	std::cout << "pend: ";
+	print(pend);
 }

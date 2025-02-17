@@ -3,7 +3,8 @@ OBJS = $(SRCS:.cpp=.o)
 
 NAME 		= PmergeMe
 CC 			= c++
-CPPFLAGS 	= -Wall -Wextra -Werror -std=c++98 -g3
+CPPFLAGS 	= -Wall -Wextra -Werror -std=c++98 -g
+
 RM 			= rm -rf
 
 all : $(NAME)

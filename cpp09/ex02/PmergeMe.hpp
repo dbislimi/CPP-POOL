@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:52:04 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/15 17:56:28 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:18:46 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,46 @@ class PmergeMe {
 			std::cout << std::endl;
 		}
 		template< typename T >
-		void	swap(T& t, int p){
+		void	swapPairs(T& t, int e){
 			size_t	size = t.size();
 
-			for (size_t	j = 0; j + 2 * p - 1 < size; j += 2 * p)
-				if (t[j + p - 1] > t[j + p * 2 - 1])
-					for (int i = 0; i < p; ++i)
-						std::swap(t[i + j], t[i + j + p]);
+			for (size_t	j = 0; j + e - 1 < size; j += e)
+				if (t[j + e / 2 - 1] > t[j + e - 1])
+					for (int i = 0; i < e / 2; ++i)
+						std::swap(t[i + j], t[i + j + e / 2]);
 		}
+		template< typename T >
+		void	push_odd(T& container, T& odd, int e){
+			typename T::iterator	it = container.begin();
+			size_t	size = container.size();
+
+			if ((size / e) % 2 == 0)
+				return ;
+			for (size_t i = ((size / e) - 1) * e; i < size; ++i){
+				odd.push_back(container[((size / e) - 1) * e]);
+				container.erase(it + ((size / e)  - 1) * e);
+			}
+		}
+		template< typename T >
+		void	pushInPend(T& container, T& pend, int e){
+			typename T::iterator	it = container.begin();
+			size_t	size = container.size();
+
+			for (size_t i = 2; i * 2 <= size / e; i += 1){
+				std::cout << i << std::endl;
+				// pend.push_back(i / 2 + 1);
+				for (int j = 0; j < e; ++j){
+					pend.push_back(container[i * e]);
+					container.erase(it + i * e);
+				}
+			}
+		}
+		void	sortVector();
+		size_t	jacobsthal(int n);
+		
 		PmergeMe();
 		PmergeMe(const PmergeMe& instance);
 		PmergeMe&	operator=(const PmergeMe& instance);
-		
 		
 	public:
 		PmergeMe(int ac, char** av);
