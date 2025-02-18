@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:46:39 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/17 21:10:05 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:55:46 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ int	main(int ac, char** av){
 	std::vector<long> vec;
 	if (build_vector(ac, av, vec) == vec.end())
 		return (1);
-	s.sort(vec);
+	s.sort_vector(vec);
 }

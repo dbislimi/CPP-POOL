@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:52:04 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/17 21:35:16 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/18 19:03:12 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,20 @@
 #include <deque>
 #include <cmath>
 
-template< typename T >void	print(T& t);
+template< typename T >
+void	print(T& t){
+	typename T::iterator it;
+	for (it = t.begin(); it != t.end(); ++it)
+		std::cout << *it << ", ";
+	std::cout << std::endl;
+}
 
+template< typename Iterator >
+Iterator&	next(Iterator& it, int n){
+	std::advance(it, n);
+	std::cout <<"it " << *it << std::endl;
+	return (it);
+}
 class PmergeMe {
 	private:
 		template< typename T >
@@ -32,14 +44,7 @@ class PmergeMe {
 					for (int i = 0; i < e / 2; ++i)
 						std::swap(t[i + j], t[i + j + e / 2]);
 		}
-		template< typename T >
-		void	insertion(T& container, int pair){
-			typename T::iterator Iterator;
-			std::vector<Iterator>	main;
-			std::vector<Iterator>	pend;
 
-			
-		}
 		template< typename T >
 		void	push_odd(T& container, T& odd, int e){
 			typename T::iterator	it = container.begin();
@@ -65,6 +70,34 @@ class PmergeMe {
 				}
 			}
 		}
+		template< typename T, typename I >
+		void	insertion(T& container, I& main, I& pend, int elements){
+			typename T::iterator it = container.begin();
+			size_t	size = container.size();
+			(void)pend;
+			(void)main;
+			(void)it;
+			//init main & pend
+			main.insert(main.end(), next(it, elements) - 1);
+			main.insert(main.end(), next(it, elements) - 1);			
+			std::cout << *main[0] << ' ' << *main[1] << std::endl;
+			for (size_t i = 0; i < size / elements; ++i){
+				main.push_back(next(it, elements) - 1);
+				pend.push_back(next(it, elements) - 1);
+				std::cout << i << std::endl;
+			}
+			std::cout << "main: ";
+			for (auto it = main.begin(); it != main.end(); ++it){
+				std::cout << *(*it) << ", ";
+			}
+			std::cout << std::endl;
+			std::cout << "pend: ";
+			for (auto it = pend.begin(); it != pend.end(); ++it){
+				std::cout << *(*it) << ", ";
+			}
+			std::cout << std::endl;
+		}
+			
 		size_t	jacobsthal(int n);
 		
 		PmergeMe(const PmergeMe& instance);
@@ -73,32 +106,12 @@ class PmergeMe {
 	public:
 		PmergeMe();
 		~PmergeMe();
+		void	sort_vector(std::vector<long>& vec);
 		
-		template< typename T >
-		void	sort(T& container){
-			size_t	size = container.size();
-			size_t	pairs = 1;
-			
-			for (; pairs * 2 < size; pairs *= 2)
-				swapPairs(container, pairs * 2);
-			print(container);
-
-			
-			
-
-		}
+		
 		
 };
 
-template< typename T >
-void	print(T& t){
-	typename T::iterator it;
-	for (it = t.begin(); it != t.end(); ++it)
-		std::cout << *it << ", ";
-	std::cout << std::endl;
-}
-// template< typename T > T	next(T& it, int p){
-// 	std::a
-// }
+
 
 #endif
