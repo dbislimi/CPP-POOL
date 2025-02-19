@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:52:04 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/18 19:03:12 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/19 17:29:33 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <vector>
 #include <deque>
 #include <cmath>
+#include <algorithm>
 
 template< typename T >
 void	print(T& t){
@@ -28,10 +29,20 @@ void	print(T& t){
 }
 
 template< typename Iterator >
-Iterator&	next(Iterator& it, int n){
+Iterator&	_next(Iterator& it, int n){
 	std::advance(it, n);
-	std::cout <<"it " << *it << std::endl;
 	return (it);
+}
+
+template< typename Iterator >
+Iterator	next(Iterator it, int n){
+	std::advance(it, n);
+	return (it);
+}
+
+template <typename T>
+bool	comp(T lv, T rv) {
+	return (*lv < *rv);
 }
 class PmergeMe {
 	private:
@@ -45,58 +56,57 @@ class PmergeMe {
 						std::swap(t[i + j], t[i + j + e / 2]);
 		}
 
-		template< typename T >
-		void	push_odd(T& container, T& odd, int e){
-			typename T::iterator	it = container.begin();
-			size_t	size = container.size();
-
-			if ((size / e) % 2 == 0)
-				return ;
-			for (size_t i = ((size / e) - 1) * e; i < size; ++i){
-				odd.push_back(container[((size / e) - 1) * e]);
-				container.erase(it + ((size / e)  - 1) * e);
-			}
-		}
-		template< typename T >
-		void	pushInPend(T& container, T& pend, int e){
-			typename T::iterator	it = container.begin();
-			size_t	size = container.size();
-
-			for (size_t i = 2; i * 2 <= size / e; i += 1){
-				pend.push_back(i);
-				for (int j = 0; j < e; ++j){
-					pend.push_back(container[i * e]);
-					container.erase(it + i * e);
-				}
-			}
-		}
+		
 		template< typename T, typename I >
 		void	insertion(T& container, I& main, I& pend, int elements){
 			typename T::iterator it = container.begin();
 			size_t	size = container.size();
-			(void)pend;
-			(void)main;
-			(void)it;
-			//init main & pend
-			main.insert(main.end(), next(it, elements) - 1);
-			main.insert(main.end(), next(it, elements) - 1);			
-			std::cout << *main[0] << ' ' << *main[1] << std::endl;
-			for (size_t i = 0; i < size / elements; ++i){
-				main.push_back(next(it, elements) - 1);
-				pend.push_back(next(it, elements) - 1);
-				std::cout << i << std::endl;
+			bool	odd = size / elements % 2;
+
+			main.insert(main.end(), _next(it, elements) - 1);
+			main.insert(main.end(), _next(it, elements) - 1);			
+			for (size_t i = 0; i < ((size / elements) - 2) / 2; ++i){
+				pend.push_back(_next(it, elements) - 1);
+				main.push_back(_next(it, elements) - 1);
+			}
+			if (odd){
+				pend.push_back(_next(it, elements) - 1);
+			}
+		
+			size_t	pend_size = pend.size();
+			size_t		inserted = 0;
+			int		i = 0;
+
+			while (inserted < pend_size){
+				int	jacob = jacobsthal(i + 2);
+				int	last_jacob = jacobsthal(i++ + 1);
+				int	jacobsthal_diff = jacob - last_jacob;
+				
+				for (int j = 0; j < jacobsthal_diff; ++j){
+					if (odd && jacob - 1 == static_cast<int>(pend_size))
+						continue ;
+
+					std::vector<std::vector<long>::iterator>::iterator	to_insert = next(pend.begin(), jacob - 2 - j);
+					std::vector<std::vector<long>::iterator>::iterator	idx = std::upper_bound(main.begin(), next(main.begin(), inserted + jacob), *to_insert, comp);
+									std::cout << "debug" << std::endl;
+					// main.insert(idx, *to_insert);
+					++inserted;
+					std::cout << inserted << std::endl;
+				}
 			}
 			std::cout << "main: ";
-			for (auto it = main.begin(); it != main.end(); ++it){
+			for (std::vector<std::vector<long>::iterator>::iterator it = main.begin(); it != main.end(); ++it){
 				std::cout << *(*it) << ", ";
 			}
 			std::cout << std::endl;
 			std::cout << "pend: ";
-			for (auto it = pend.begin(); it != pend.end(); ++it){
+			for (std::vector<std::vector<long>::iterator>::iterator it = pend.begin(); it != pend.end(); ++it){
 				std::cout << *(*it) << ", ";
 			}
 			std::cout << std::endl;
+				
 		}
+		
 			
 		size_t	jacobsthal(int n);
 		

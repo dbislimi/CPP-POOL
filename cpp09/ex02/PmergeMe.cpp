@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:44:08 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/18 17:36:10 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/19 17:29:37 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,4 @@ void	PmergeMe::sort_vector(std::vector<long>& vec){
 
 	insertion(vec, main, pend, 4);
 }
+
