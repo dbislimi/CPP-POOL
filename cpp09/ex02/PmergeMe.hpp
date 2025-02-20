@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:52:04 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/19 17:29:33 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:00:22 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,16 @@ void	print(T& t){
 }
 
 template< typename Iterator >
-Iterator&	_next(Iterator& it, int n){
+Iterator	adv(Iterator it, int n){
 	std::advance(it, n);
 	return (it);
 }
 
-template< typename Iterator >
-Iterator	next(Iterator it, int n){
-	std::advance(it, n);
-	return (it);
+template < typename T >
+bool	comp(T it1, T it2) {
+	return (*it1 < *it2);
 }
 
-template <typename T>
-bool	comp(T lv, T rv) {
-	return (*lv < *rv);
-}
 class PmergeMe {
 	private:
 		template< typename T >
@@ -62,37 +57,18 @@ class PmergeMe {
 			typename T::iterator it = container.begin();
 			size_t	size = container.size();
 			bool	odd = size / elements % 2;
-
-			main.insert(main.end(), _next(it, elements) - 1);
-			main.insert(main.end(), _next(it, elements) - 1);			
-			for (size_t i = 0; i < ((size / elements) - 2) / 2; ++i){
-				pend.push_back(_next(it, elements) - 1);
-				main.push_back(_next(it, elements) - 1);
+			main.clear();
+			pend.clear();
+			std::cout << "odd: " << odd << std::endl;
+			std::cout << "elements: " << elements << std::endl;
+			main.insert(main.end(), adv(it, elements - 1));
+			main.insert(main.end(), adv(it, elements * 2 - 1));
+			for (size_t i = 3; i < (size / elements); i += 2){
+				pend.push_back(adv(it, elements * i - 1));
+				main.push_back(adv(it, elements * (i + 1) - 1));
 			}
 			if (odd){
-				pend.push_back(_next(it, elements) - 1);
-			}
-		
-			size_t	pend_size = pend.size();
-			size_t		inserted = 0;
-			int		i = 0;
-
-			while (inserted < pend_size){
-				int	jacob = jacobsthal(i + 2);
-				int	last_jacob = jacobsthal(i++ + 1);
-				int	jacobsthal_diff = jacob - last_jacob;
-				
-				for (int j = 0; j < jacobsthal_diff; ++j){
-					if (odd && jacob - 1 == static_cast<int>(pend_size))
-						continue ;
-
-					std::vector<std::vector<long>::iterator>::iterator	to_insert = next(pend.begin(), jacob - 2 - j);
-					std::vector<std::vector<long>::iterator>::iterator	idx = std::upper_bound(main.begin(), next(main.begin(), inserted + jacob), *to_insert, comp);
-									std::cout << "debug" << std::endl;
-					// main.insert(idx, *to_insert);
-					++inserted;
-					std::cout << inserted << std::endl;
-				}
+				pend.push_back(adv(it, elements * (size / elements)) - 1);
 			}
 			std::cout << "main: ";
 			for (std::vector<std::vector<long>::iterator>::iterator it = main.begin(); it != main.end(); ++it){
@@ -105,8 +81,60 @@ class PmergeMe {
 			}
 			std::cout << std::endl;
 				
+			typename I::iterator	to_insert;
+			typename I::iterator	idx;
+			size_t	pend_size = pend.size();
+			size_t		inserted = 0;
+			int		i = 0;
+
+			if (pend_size == 0)
+				return ;
+			while (inserted < pend_size - 1){
+				int	jacob = jacobsthal(i + 2);
+				int	last_jacob = jacobsthal(i++ + 1);
+				int	jacobsthal_diff = jacob - last_jacob;
+				std::cout << "jacob: " << jacob  << "jacobdiff: " << jacobsthal_diff << std::endl;
+
+				for (int j = 0; j < jacobsthal_diff; ++j){
+					std::cout <<  "j: " << j << std::endl;
+					if (odd && jacob - j == static_cast<int>(pend_size) + 1)
+						continue ;
+
+
+					to_insert = adv(pend.begin(), jacob - 2 - j);
+					idx = std::upper_bound(main.begin(), adv(main.begin(), inserted + jacob), *to_insert, comp<std::vector<long>::iterator>);
+					main.insert(idx, *to_insert);
+					++inserted;
+					std::cout << "inserted: " << inserted << std::endl;
+				}
+			}
+			if (odd){
+				to_insert = adv(pend.begin(), pend_size - 1);
+				idx = std::upper_bound(main.begin(), main.end(), *to_insert, comp<std::vector<long>::iterator>);
+				main.insert(idx, *to_insert);
+			}
+			std::cout << "main: ";
+			for (std::vector<std::vector<long>::iterator>::iterator it = main.begin(); it != main.end(); ++it){
+				std::cout << *(*it) << ", ";
+			}
+			std::cout << std::endl;
+			std::cout << "pend: ";
+			for (std::vector<std::vector<long>::iterator>::iterator it = pend.begin(); it != pend.end(); ++it){
+				std::cout << *(*it) << ", ";
+			}
+			std::cout << std::endl;
+			
+			container.clear();
+			for (size_t i = 0; i < main.size(); ++i){
+				
+				std::cout << "i:" << i << std::endl;
+				std::cout << *(*adv(main.begin() , i)) << std::endl;
+				for (int j = 1; j <= elements; ++j){
+					std::cout << *adv(*adv(main.begin(), i), - elements + j) << std::endl;
+					container.push_back(*adv(*adv(main.begin(), i), - elements + j));
+				}
+			}
 		}
-		
 			
 		size_t	jacobsthal(int n);
 		
