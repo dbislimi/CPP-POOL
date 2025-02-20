@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:52:04 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/20 18:00:22 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:05:15 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ Iterator	adv(Iterator it, int n){
 
 template < typename T >
 bool	comp(T it1, T it2) {
+	std::cout << "comp: " << *it1 << ", " << *it2 << std::endl;
 	return (*it1 < *it2);
 }
 
@@ -102,7 +103,8 @@ class PmergeMe {
 
 
 					to_insert = adv(pend.begin(), jacob - 2 - j);
-					idx = std::upper_bound(main.begin(), adv(main.begin(), inserted + jacob), *to_insert, comp<std::vector<long>::iterator>);
+					std::cout << *(*main.begin()) << std::endl;
+					idx = std::upper_bound(main.begin(), adv(main.begin(), inserted + jacob - 1), *to_insert, comp<typename T::iterator>);
 					main.insert(idx, *to_insert);
 					++inserted;
 					std::cout << "inserted: " << inserted << std::endl;
@@ -110,7 +112,7 @@ class PmergeMe {
 			}
 			if (odd){
 				to_insert = adv(pend.begin(), pend_size - 1);
-				idx = std::upper_bound(main.begin(), main.end(), *to_insert, comp<std::vector<long>::iterator>);
+				idx = std::upper_bound(main.begin(), main.end(), *to_insert, comp<typename T::iterator>);
 				main.insert(idx, *to_insert);
 			}
 			std::cout << "main: ";
@@ -123,17 +125,22 @@ class PmergeMe {
 				std::cout << *(*it) << ", ";
 			}
 			std::cout << std::endl;
-			
 			container.clear();
-			for (size_t i = 0; i < main.size(); ++i){
-				
-				std::cout << "i:" << i << std::endl;
-				std::cout << *(*adv(main.begin() , i)) << std::endl;
-				for (int j = 1; j <= elements; ++j){
-					std::cout << *adv(*adv(main.begin(), i), - elements + j) << std::endl;
-					container.push_back(*adv(*adv(main.begin(), i), - elements + j));
+			for (std::vector<std::vector<long>::iterator>::iterator it = main.begin(); it != main.end(); ++it){
+				for (int i = 1; i <= elements; ++i){
+					std::cout << "adding: " <<*adv(*it, -elements + i) << ", ";
+					container.push_back(*adv(*it, -elements + i));
 				}
 			}
+			// for (size_t i = 0; i < main.size(); ++i){
+				
+			// 	std::cout << "i:" << i << std::endl << "mainsize: " << main.size() << std::endl;
+			// 	std::cout << *(*adv(main.begin() , i)) << std::endl;
+			// 	for (int j = 1; j <= elements; ++j){
+			// 		std::cout << *adv(*adv(main.begin(), i), - elements + j) << std::endl;
+			// 		container.push_back(*adv(*adv(main.begin(), i), - elements + j));
+			// 	}
+			// }
 		}
 			
 		size_t	jacobsthal(int n);
