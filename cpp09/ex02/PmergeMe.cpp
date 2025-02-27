@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:44:08 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/25 17:21:23 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/27 14:17:40 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ void	PmergeMe::sort_vector(std::vector<long>& vec){
 	std::vector<std::vector<long>::iterator>	main;
 	std::vector<std::vector<long>::iterator>	pend;
 
-	for (elements /= 2; elements >= 1; elements /= 2)
+	for (elements /= 2; elements >= 1; elements /= 2){
+		std::cout << "elements: "  << elements << std::endl;
 		insertion(vec, main, pend, elements);
+	}
 	std::cout << "insert: ";
 	print(vec);
 }

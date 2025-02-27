@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:46:39 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/25 17:14:50 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/27 17:14:19 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ int	main(int ac, char** av){
 	
 	if (build_container(ac, av, dq) == false)
 		return (1);
-	s.sort_deque(dq);
+	// s.sort_deque(dq);
 }

@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:52:04 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/25 17:13:33 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/27 18:14:32 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	print(T& t){
 template< typename Iterator >
 Iterator	adv(Iterator it, int n){
 	std::advance(it, n);
+	// std::cout << "adding: " << *(*it) << std::endl;
 	return (it);
 }
 
@@ -77,7 +78,7 @@ class PmergeMe {
 			typename 	T::iterator it = container.begin();
 			size_t		size = container.size();
 			bool		odd = size / elements % 2;
-
+			
 			if (size / elements <= 2)
 				return ;
 			main.insert(main.end(), adv(it, elements - 1));
@@ -85,40 +86,80 @@ class PmergeMe {
 			for (size_t i = 3; i < (size / elements); i += 2){
 				pend.push_back(adv(it, elements * i - 1));
 				main.push_back(adv(it, elements * (i + 1) - 1));
+				std::cout << "main: ";
+			for (typename I::iterator it = main.begin(); it != main.end(); ++it){
+				std::cout << *(*it) << ", ";
+			}
+			std::cout << std::endl;
+			std::cout << "pend: ";
+			for (typename I::iterator it = pend.begin(); it != pend.end(); ++it){
+				std::cout << *(*it) << ", ";
+			}
+			std::cout << std::endl;
 			}
 			if (odd)
 				pend.push_back(adv(it, elements * (size / elements)) - 1);
-
+			std::cout << "main: ";
+			for (typename I::iterator it = main.begin(); it != main.end(); ++it){
+				std::cout << *(*it) << ", ";
+			}
+			std::cout << std::endl;
+			std::cout << "pend: ";
+			for (typename I::iterator it = pend.begin(); it != pend.end(); ++it){
+				std::cout << *(*it) << ", ";
+			}
+			std::cout << std::endl;
 			typename I::iterator	to_insert;
 			typename I::iterator	idx;
 			size_t	pend_size = pend.size();
 			size_t	inserted = 0;
 			int		i = 0;
-
-			while (inserted < pend_size - 1){
+			std::cout << "pendsize: " << pend_size << std::endl;
+			while (inserted < pend_size){
 				int	jacob = jacobsthal(i + 2);
 				int	last_jacob = jacobsthal(i++ + 1);
 				int	jacobsthal_diff = jacob - last_jacob;
 
 				for (int j = 0; j < jacobsthal_diff; ++j){
-					if (odd && jacob - j == static_cast<int>(pend_size) + 1)
-						continue ;
+					// if (odd && jacob - j == static_cast<int>(pend_size) + 1)
+					// 	continue ;
 					to_insert = adv(pend.begin(), jacob - 2 - j);
 					if (to_insert == pend.end())
 						continue ;
-					idx = std::upper_bound(main.begin(), adv(main.begin(), inserted + jacob), *to_insert, comp<typename T::iterator>);
+					std::cout << "debug: " <<j << ", "<< jacob << std::endl << *(*to_insert) << std::endl << "inserted: " << inserted << std::endl;
+					if (inserted + jacob < main.size())
+						idx = std::upper_bound(main.begin(), adv(main.begin(), inserted + jacob), *to_insert, comp<typename T::iterator>);
+					else
+						idx = std::upper_bound(main.begin(), main.end(), *to_insert, comp<typename T::iterator>);	
+					if (idx == main.end())
+						std::cout << "end" << std::endl;
+					// std::cout << "idx: " << *(*idx) << std::endl;
 					main.insert(idx, *to_insert);
 					++inserted;
 				}
 			}
-			if (odd){
-				to_insert = adv(pend.begin(), pend_size - 1);
-				idx = std::upper_bound(main.begin(), main.end(), *to_insert, comp<typename T::iterator>);
-				main.insert(idx, *to_insert);
+			std::cout << "main: ";
+			for (typename I::iterator it = main.begin(); it != main.end(); ++it){
+				std::cout << *(*it) << ", ";
 			}
+			std::cout << std::endl;
+			std::cout << "pend: ";
+			for (typename I::iterator it = pend.begin(); it != pend.end(); ++it){
+				std::cout << *(*it) << ", ";
+			}
+			std::cout << std::endl;
+
+			// if (odd){
+			// 	to_insert = adv(pend.begin(), pend_size - 1);
+			// 	idx = std::upper_bound(main.begin(), main.end(), *to_insert, comp<typename T::iterator>);
+			// 	main.insert(idx, *to_insert);
+			// }
 			for (typename I::iterator it = main.begin(); it != main.end(); ++it)
 				for (int i = elements - 1; i >= 0; --i)
 					sort.push_back(*adv(*it, -i));
+			std::cout << "container: ";
+			print(container);
+			std::cout << std::endl;
 			for (size_t i = 0; i < sort.size(); ++i)
 				container[i] = sort[i];
 		}
