@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 16:26:35 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/02 21:03:30 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/28 17:48:49 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ BitcoinExchange::BitcoinExchange(std::string filename){
 		if (!isValidDate(strs.date))
 			throw BitcoinExchange::InvalidDate();
 		this->_content += buff;
-		this->_data[strs.date] = atof(strs.value.c_str());
+		this->_data[date_to_int(strs.date)] = atof(strs.value.c_str());
 	}
 }
 
@@ -52,46 +52,8 @@ BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& instance){
 	return (*this);
 }
 
-std::map<std::string, float>::iterator	BitcoinExchange::findMatch(const std::string& date){
-	std::map<std::string, float>::iterator	it;
-	std::string	str;
-	size_t	first;
-	size_t	second;
-	int		YMD[3];
-
-	first = date.find_first_of('-');
-	second = date.find_last_of('-');
-	YMD[0] = atoi(date.substr(0, first).c_str());
-	YMD[1] = atoi(date.substr(first + 1, second).c_str());
-	YMD[2] = atoi(date.substr(second + 1).c_str());
-	while (this->_content.find(convert(YMD, 1)) == std::string::npos){
-		if (YMD[0] <= 2008)
-			return (this->_data.end());
-		--YMD[0];
-		YMD[1] = 12;
-		YMD[2] = 31;
-	}
-	while (this->_content.find(convert(YMD, 2)) == std::string::npos){
-		YMD[0] -= (YMD[1] == 1);
-		if (YMD[0] == 2008)
-			return (this->_data.end());
-		YMD[1] = (YMD[1] + 10) % 12 + 1;
-		YMD[2] = 31;
-	}
-	while (this->_content.find(convert(YMD, 3)) == std::string::npos){
-		YMD[0] -= (YMD[1] == 1 && YMD[2] == 1);
-		if (YMD[0] == 2008)
-			return (this->_data.end());
-		if (YMD[2] == 1){
-			YMD[1] = (YMD[1] + 10) % 12 + 1;
-		}
-		YMD[2] = (YMD[2] + 29) % 31 + 1;
-	}
-	return (this->_data.find(convert(YMD, 3)));
-}
-
 void	BitcoinExchange::analyse(std::string filename){
-	std::map<std::string, float>::iterator	it;
+	std::map<int, float>::iterator	it;
 	std::ifstream	file;
 	std::string		buff;
 	t_strings		strs;
@@ -126,10 +88,11 @@ void	BitcoinExchange::analyse(std::string filename){
 				continue ;
 			}
 		}
-		it = this->_data.find(strs.date);
-		if (it == _data.end())
-			it = this->findMatch(strs.date);
-		if (it == this->_data.end()){
+		int	date = date_to_int(strs.date);
+		it = this->_data.lower_bound(date);
+		if ((*it).first != date && it != _data.begin())
+			--it;
+		else if ((*it).first != date){
 			std::cout << "Error: no matching date found in BE for " << buff << std::endl;
 			continue ;
 		}

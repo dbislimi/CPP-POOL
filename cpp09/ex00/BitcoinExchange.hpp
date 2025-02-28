@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 16:21:49 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/03 14:47:04 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/28 17:48:49 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@
 class BitcoinExchange {
 	private:
 		std::string						_content;
-		std::map<std::string, float>	_data;
-		std::map<std::string, float>::iterator	findMatch(const std::string& date);
+		std::map<int, float>	_data;
 		BitcoinExchange();
 
 	public:
@@ -63,6 +62,6 @@ typedef struct s_strings
 bool	split(std::string s, char c, t_strings* strs);
 bool	isValidDate(const std::string& date);
 bool	isFloat(std::string &str);
-std::string	convert(int YMD[3], int	n);
+int		date_to_int(std::string str);
 
 #endif

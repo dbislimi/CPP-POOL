@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 19:37:31 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/02 20:48:31 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/28 17:49:32 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,6 @@ bool	isFloat(std::string &str){
 	return (coma);
 }
 
-std::string	convert(int YMD[3], int	n){
-	std::stringstream	ss;
-
-	for (int i = 0; i < n; ++i){
-		ss << std::setw(2) << std::setfill('0') << YMD[i];
-		if (i != 2)
-			ss << '-';
-	}
-	return (ss.str());
+int	date_to_int(std::string str){
+	return (atoi(str.substr(0, 4).c_str()) * 1E4 + atoi(str.substr(5, 7).c_str()) * 1E2 + atoi(str.substr(8, 10).c_str()));
 }
-
