@@ -6,7 +6,7 @@
 /*   By: dbislimi <dbislimi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:44:08 by dbislimi          #+#    #+#             */
-/*   Updated: 2025/02/27 14:17:40 by dbislimi         ###   ########.fr       */
+/*   Updated: 2025/02/28 16:43:32 by dbislimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,33 +33,26 @@ size_t	PmergeMe::jacobsthal(int n){
 
 void	PmergeMe::sort_vector(std::vector<long>& vec){
 	size_t	size = vec.size();
-	size_t	elements = 2;
+	size_t	pairs = 1;
 	
-	for (; elements <= size / 2; elements *= 2)
-		swapPairs(vec, elements);
-	std::cout << "swap:";
-	print(vec);
+	for (; pairs * 2 <= size; pairs *= 2)
+		swapPairs(vec, pairs * 2);
 	std::vector<std::vector<long>::iterator>	main;
 	std::vector<std::vector<long>::iterator>	pend;
 
-	for (elements /= 2; elements >= 1; elements /= 2){
-		std::cout << "elements: "  << elements << std::endl;
-		insertion(vec, main, pend, elements);
-	}
-	std::cout << "insert: ";
-	print(vec);
+	for (pairs /= 2; pairs >= 1; pairs /= 2)
+		insertion(vec, main, pend, pairs);
 }
 
 void	PmergeMe::sort_deque(std::deque<long>& dq){
 	size_t	size = dq.size();
-	size_t	elements = 2;
+	size_t	pairs = 1;
 	
-	for (; elements <= size / 2; elements *= 2)
-		swapPairs(dq, elements);
-	
+	for (; pairs * 2 <= size; pairs *= 2)
+		swapPairs(dq, pairs * 2);
 	std::deque<std::deque<long>::iterator>	main;
 	std::deque<std::deque<long>::iterator>	pend;
 
-	for (elements /= 2; elements >= 1; elements /= 2)
-		insertion(dq, main, pend, elements);
+	for (pairs /= 2; pairs >= 1; pairs /= 2)
+		insertion(dq, main, pend, pairs);
 }
